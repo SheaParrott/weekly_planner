@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import Day from './Components/Day'
 
 class App extends Component {
   render() {
-    return <div className="App" />
+    return (
+      <div className="App">
+        <Day />
+      </div>
+    )
   }
 }
 
@@ -18,7 +23,7 @@ export default App
 // [] Should only have one event running at the same time?
 // [] validate all entries
 // [] make all entries CRUD - create, read, update, delete
-// [] event object {event: “ “, date: MMDDYY, time: 0:00, isWeekend: bool }
+// [] event object {event: “ “, start_date: MMDDYY, end_day: MMDDYY, start_time: 0:00, end_time: 0:00, isWeekend: bool, color:  }
 // [] display blocks for available events. Will probably do this in 30 min intervals
 // [] make visual difference for weekend boxes
 
