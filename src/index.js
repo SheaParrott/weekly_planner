@@ -31,14 +31,16 @@ const months = [
 // const allReducers = combineReducers({
 //   day: currentDayReducer
 // })
-const currentDay = new Date().toISOString()
+const TheCurrentDay = new Date()
+const currentDay = TheCurrentDay.toISOString()
+const firstDayOfWeek = getSunday(new Date(TheCurrentDay.toDateString()))
 
 const store = createStore(
   currentDayReducer,
   {
-    day: new Date(),
-    firstDayOfWeek: getSunday(new Date()),
-    monthChosen: currentDay.slice(5, 7),
+    day: TheCurrentDay,
+    firstDayOfWeek: firstDayOfWeek,
+    monthChosen: currentDay.slice(5, 7) - 1,
     dayChosen: currentDay.slice(8, 10),
     yearChosen: currentDay.slice(0, 4),
     NumberOfDays: 7,

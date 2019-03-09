@@ -4,11 +4,21 @@ import './App.css'
 import Day from './Components/Day'
 import { connect } from 'react-redux'
 import { updateCurrentDay } from './Actions/updateStateCurrentDay'
+import { updateFirstDayOfWeek } from './Actions/updateFirstDayOfWeek'
+import {
+  updateSelectedDay,
+  updateSelectedMonth,
+  updateSelectedYear,
+  updateSelectedDaysShown
+} from './Actions/updateSelectedDay'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.onUpdateStateCurrentDay = this.onUpdateStateCurrentDay.bind(this)
+    this.onUpdateStateFirstDayOfWeek = this.onUpdateStateFirstDayOfWeek.bind(
+      this
+    )
     this.state = {
       months: [
         { number: 0, name: 'January', days: 31 },
@@ -30,14 +40,38 @@ class App extends Component {
       weekOrDayChosen: ''
     }
   }
-
   onUpdateStateCurrentDay() {
-    this.props.onUpdateStateCurrentDay(new Date())
+    // [x] redux
+    this.props.onUpdateStateCurrentDay(this.setDateChosen())
+  }
+  setDateChosen = () => {
+    // [x] redux
+    // dates will be used like so:
+    //  console.log(new Date(2018, 0, 1))
+    // console.log('month Chosen: ' + this.props.monthChosen)
+    // console.log('day Chosen: ' + this.props.dayChosen)
+    // console.log('year Chosen: ' + this.props.yearChosen)
+    return new Date(
+      this.props.yearChosen,
+      this.props.monthChosen,
+      this.props.dayChosen
+    )
+  }
+  onUpdateStateFirstDayOfWeek() {
+    // [x] redux
+    // current gets the current first day of week
+    // need to pass in the value of the date chosen
+    let d = this.setDateChosen()
+    var day = d.getDay(),
+      diff = d.getDate() - day
+    this.props.onUpdateStateFirstDayOfWeek(new Date(d.setDate(diff)))
+    this.onUpdateStateCurrentDay()
   }
   test = () => {
     console.log(new Date(2018, 0, 1))
   }
   updateMonthChosen = event => {
+    // [] redux
     let theMonth = this.state.months.filter(
       month => month.name === event.target.value
     )
@@ -46,16 +80,19 @@ class App extends Component {
     })
   }
   updateDayChosen = event => {
+    // [] redux
     this.setState({
       dayChosen: event.target.value
     })
   }
   updateYearChosen = event => {
+    // [] redux
     this.setState({
       yearChosen: event.target.value
     })
   }
   updateWeekOrDayChosen = event => {
+    // [] redux
     this.setState({
       weekOrDayChosen: event.target.value
     })
@@ -118,7 +155,9 @@ class App extends Component {
           </select>
           <button onClick={this.updateFullDate}>Search</button>
         </div>
-        <button onClick={this.onUpdateStateCurrentDay}>get current day</button>
+        <button onClick={this.onUpdateStateFirstDayOfWeek}>
+          get current day
+        </button>
         {this.props.day}
         <Day />
       </div>
@@ -135,7 +174,10 @@ const mapStateToProps = state => ({
   NumberOfDays: state.NumberOfDays
 })
 
-const mapActionsToProps = { onUpdateStateCurrentDay: updateCurrentDay }
+const mapActionsToProps = {
+  onUpdateStateCurrentDay: updateCurrentDay,
+  onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek
+}
 
 export default connect(
   mapStateToProps,

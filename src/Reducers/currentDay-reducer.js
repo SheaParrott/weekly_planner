@@ -1,5 +1,12 @@
 import { CURRENT_DAY } from '../Actions/updateStateCurrentDay'
 import { FIRST_DAY_OF_WEEK } from '../Actions/updateFirstDayOfWeek'
+import {
+  SELECTED_DAY,
+  SELECTED_MONTH,
+  SELECTED_YEAR,
+  SELECTED_DAYS_SHOWN
+} from '../Actions/updateSelectedDay'
+
 const initialState = {
   day: CURRENT_DAY
 }
