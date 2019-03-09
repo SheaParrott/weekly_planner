@@ -3,14 +3,25 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import currentDayReducer from './Reducers/currentDay-reducer'
+import currentDayReducer from './Reducers/currentWeek-reducer'
 import { Provider } from 'react-redux'
 
 import { combineReducers, createStore } from 'redux'
+import currentWeek from './Reducers/currentWeek-reducer'
 
-const store = createStore(currentDayReducer, {
-  currentDay: new Date()
-})
+function getSunday(d) {
+  let day = d.getDay(),
+    diff = d.getDate() - day
+  return new Date(d.setDate(diff))
+}
+
+const store = createStore(
+  currentDayReducer,
+  {
+    currentDay: getSunday(new Date())
+  },
+  window.devToolsExtension && window.devToolsExtension()
+)
 console.log()
 
 ReactDOM.render(

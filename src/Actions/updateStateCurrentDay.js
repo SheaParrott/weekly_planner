@@ -1,10 +1,11 @@
-export const CURRENT_DAY = 'day: updateCurrentDay'
+export const CURRENT_DAY = 'currentDay: updateCurrentDay'
 
 export function updateCurrentDay(currentDay) {
-  return {
-    type: CURRENT_DAY,
-    payload: {
-      day: currentDay
-    }
-  }
+  console.log(currentDay)
+  // return {
+  //   type: CURRENT_DAY,
+  //   payload: {
+  //     day: currentDay
+  //   }
+  // }
 }
