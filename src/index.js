@@ -5,7 +5,7 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
 
-import { combineReducers, createStore } from 'redux'
+import { createStore } from 'redux'
 import currentDayReducer from './Reducers/currentDay-reducer'
 
 function getSunday(d) {
@@ -31,12 +31,18 @@ const months = [
 // const allReducers = combineReducers({
 //   day: currentDayReducer
 // })
+const currentDay = new Date().toISOString()
+
 const store = createStore(
   currentDayReducer,
   {
-    day: getSunday(new Date()),
-    months: months,
-    time: 0
+    day: new Date(),
+    firstDayOfWeek: getSunday(new Date()),
+    monthChosen: currentDay.slice(5, 7),
+    dayChosen: currentDay.slice(8, 10),
+    yearChosen: currentDay.slice(0, 4),
+    NumberOfDays: 7,
+    months: months
   },
   window.devToolsExtension && window.devToolsExtension()
 )

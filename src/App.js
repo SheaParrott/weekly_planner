@@ -30,9 +30,7 @@ class App extends Component {
       weekOrDayChosen: ''
     }
   }
-  // componentDidMount = () => {
-  //   this.onUpdateStateCurrentDay()
-  // }
+
   onUpdateStateCurrentDay() {
     this.props.onUpdateStateCurrentDay(new Date())
   }
@@ -76,62 +74,51 @@ class App extends Component {
     // weekOrDayChosen: ''
   }
   render() {
-    // console.log(this.props.months)
+    console.log(this.props)
+    let chosenMonth = this.props.months.filter(
+      month => month.number === this.props.monthChosen - 1
+    )
     return (
       <div className="App">
         <button onClick={this.test}>test</button>
         <div className="inputContainer">
-          <input
-            onChange={this.updateMonthChosen}
-            placeholder="month"
-            list="months"
-          />
-          <datalist id="months">
+          <select onChange={this.updateMonthChosen} name="months">
             {this.state.months.map((month, index) => {
-              return <option key={index} value={month.name} />
+              return (
+                <option key={index} value={month.name}>
+                  {month.name}
+                </option>
+              )
             })}
-          </datalist>
-          <input
-            onChange={this.updateDayChosen}
-            list="days"
-            placeholder="day"
-          />
-          <datalist id="days">
-            {this.state.monthChosen
-              ? this.state.monthChosen.map(days => {
-                  let array = []
-                  for (let i = 1; i <= days.days; i++) {
-                    array.push(i)
-                  }
-                  return array.map((number, index) => {
-                    return <option key={index} value={number} />
-                  })
-                })
-              : null}
-          </datalist>
-          <input
-            onChange={this.updateYearChosen}
-            list="year"
-            placeholder="year"
-          />
-          <datalist id="year">
-            <option value="2018" />
-            <option value="2019" />
-            <option value="2020" />
-            <option value="2021" />
-          </datalist>
-          <input
-            onChange={this.updateWeekOrDayChosen}
-            list="weekOrDay"
-            placeholder="W/D"
-          />
-          <datalist id="weekOrDay">
-            <option value="Day" />
-            <option value="Week" />
-          </datalist>
+          </select>
+          <select onChange={this.updateDayChosen} name="days">
+            {chosenMonth.map(days => {
+              let array = []
+              for (let i = 1; i <= days.days; i++) {
+                array.push(i)
+              }
+              return array.map((number, index) => {
+                return (
+                  <option key={index} value={number}>
+                    {number}
+                  </option>
+                )
+              })
+            })}
+          </select>
+          <select onChange={this.updateDayChosen} name="year">
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+          </select>
+          <select onChange={this.updateDayChosen} name="W/D">
+            <option value="1">Day</option>
+            <option value="7">Week</option>
+          </select>
           <button onClick={this.updateFullDate}>Search</button>
         </div>
-        <button onClick={this.onUpdateStateCurrentDay} />
+        <button onClick={this.onUpdateStateCurrentDay}>get current day</button>
         {this.props.day}
         <Day />
       </div>
@@ -139,7 +126,13 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => ({
-  day: state.day.toLocaleString()
+  day: state.day.toLocaleString(),
+  firstDayOfWeek: state.firstDayOfWeek,
+  months: state.months,
+  monthChosen: state.monthChosen,
+  dayChosen: state.dayChosen,
+  yearChosen: state.yearChosen,
+  NumberOfDays: state.NumberOfDays
 })
 
 const mapActionsToProps = { onUpdateStateCurrentDay: updateCurrentDay }
