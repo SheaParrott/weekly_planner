@@ -12,8 +12,6 @@ function getSunday(d) {
 export function updateCurrentDay(currentDay) {
   return {
     type: CURRENT_DAY,
-    payload: {
-      day: getSunday(currentDay)
-    }
+    payload: getSunday(currentDay)
   }
 }

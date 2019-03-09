@@ -67,6 +67,9 @@ class App extends Component {
     console.log(this.state.dayChosen)
     console.log(this.state.yearChosen)
     console.log(this.state.weekOrDayChosen)
+    // format like so:
+    //     console.log(new Date(2018, 0, 1))
+
     // monthChosen: '',
     // dayChosen: '',
     // yearChosen: '',
