@@ -1,12 +1,16 @@
 import { CURRENT_DAY } from '../Actions/updateStateCurrentDay'
 
-// will work on better  name later
-// this takes the chosen day and finds the first day of the week
-// so we can get the week generated and add to state.
-export default function currentDayReducer(state = '', { type, payload }) {
+const initialState = {
+  day: CURRENT_DAY
+}
+
+export default function currentDayReducer(
+  state = initialState,
+  { type, payload }
+) {
   switch (type) {
     case CURRENT_DAY:
-      return payload
+      return Object.assign({}, state, payload)
     default:
       return state
   }
