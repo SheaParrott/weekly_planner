@@ -6,28 +6,33 @@ import { connect } from 'react-redux'
 import { updateCurrentDay } from './Actions/updateStateCurrentDay'
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props)
-  // this.onUpdateStateCurrentDay = this.onUpdateStateCurrentDay.bind(this)
-  // }
+  constructor(props) {
+    super(props)
+    this.onUpdateStateCurrentDay = this.onUpdateStateCurrentDay.bind(this)
+  }
   // componentDidMount = () => {
   //   this.onUpdateStateCurrentDay()
   // }
-  // onUpdateStateCurrentDay() {
-  //   this.props.updateCurrentDay(new Date())
-  // }
+  onUpdateStateCurrentDay() {
+    this.props.onUpdateStateCurrentDay(new Date())
+  }
   render() {
-    console.log(this.props.currentDay)
     return (
       <div className="App">
+        <div>
+          <input />
+        </div>
+        <button onClick={this.onUpdateStateCurrentDay} />
+        {this.props.day}
         <Day />
       </div>
     )
   }
 }
 const mapStateToProps = state => ({
-  currentDay: state
+  day: state.day.toLocaleString()
 })
+
 const mapActionsToProps = { onUpdateStateCurrentDay: updateCurrentDay }
 
 export default connect(
