@@ -11,7 +11,7 @@ export function updateSelectedDay(selected) {
   return {
     type: SELECTED_DAY,
     payload: {
-      day: selected
+      dayChosen: selected
     }
   }
 }
@@ -19,7 +19,7 @@ export function updateSelectedMonth(selected) {
   return {
     type: SELECTED_MONTH,
     payload: {
-      day: selected
+      monthChosen: selected
     }
   }
 }
@@ -27,7 +27,7 @@ export function updateSelectedYear(selected) {
   return {
     type: SELECTED_YEAR,
     payload: {
-      day: selected
+      yearChosen: selected
     }
   }
 }
@@ -35,7 +35,7 @@ export function updateSelectedDaysShown(selected) {
   return {
     type: SELECTED_DAYS_SHOWN,
     payload: {
-      day: selected
+      NumberOfDays: selected
     }
   }
 }

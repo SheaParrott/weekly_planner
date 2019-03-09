@@ -20,6 +20,14 @@ export default function currentDayReducer(
       return Object.assign({}, state, payload)
     case FIRST_DAY_OF_WEEK:
       return Object.assign({}, state, payload)
+    case SELECTED_DAY:
+      return Object.assign({}, state, payload)
+    case SELECTED_YEAR:
+      return Object.assign({}, state, payload)
+    case SELECTED_MONTH:
+      return Object.assign({}, state, payload)
+    case SELECTED_DAYS_SHOWN:
+      return Object.assign({}, state, payload)
     default:
       return state
   }

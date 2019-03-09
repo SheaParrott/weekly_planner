@@ -19,26 +19,10 @@ class App extends Component {
     this.onUpdateStateFirstDayOfWeek = this.onUpdateStateFirstDayOfWeek.bind(
       this
     )
-    this.state = {
-      months: [
-        { number: 0, name: 'January', days: 31 },
-        { number: 1, name: 'February', days: 28 },
-        { number: 2, name: 'March', days: 31 },
-        { number: 3, name: 'April', days: 30 },
-        { number: 4, name: 'May', days: 31 },
-        { number: 5, name: 'June', days: 30 },
-        { number: 6, name: 'July', days: 31 },
-        { number: 7, name: 'August', days: 31 },
-        { number: 8, name: 'September', days: 30 },
-        { number: 9, name: 'October', days: 31 },
-        { number: 10, name: 'November', days: 30 },
-        { number: 11, name: 'December', days: 31 }
-      ],
-      monthChosen: '',
-      dayChosen: '',
-      yearChosen: '',
-      weekOrDayChosen: ''
-    }
+    this.updateDayChosen = this.updateDayChosen.bind(this)
+    this.updateYearChosen = this.updateYearChosen.bind(this)
+    this.updateMonthChosen = this.updateMonthChosen.bind(this)
+    this.updateWeekOrDayChosen = this.updateWeekOrDayChosen.bind(this)
   }
   onUpdateStateCurrentDay() {
     // [x] redux
@@ -61,6 +45,7 @@ class App extends Component {
     // [x] redux
     // current gets the current first day of week
     // need to pass in the value of the date chosen
+
     let d = this.setDateChosen()
     var day = d.getDay(),
       diff = d.getDate() - day
@@ -71,44 +56,27 @@ class App extends Component {
     console.log(new Date(2018, 0, 1))
   }
   updateMonthChosen = event => {
-    // [] redux
-    let theMonth = this.state.months.filter(
+    // [x] redux
+    let theMonth = this.props.months.filter(
       month => month.name === event.target.value
     )
-    this.setState({
-      monthChosen: theMonth
-    })
+    this.props.updateMonthChosen(theMonth[0].number)
+    // this.setState({
+    //   monthChosen: theMonth
+    // })
   }
   updateDayChosen = event => {
-    // [] redux
-    this.setState({
-      dayChosen: event.target.value
-    })
+    // [x] redux
+    this.props.updateDayChosen(event.target.value)
   }
   updateYearChosen = event => {
-    // [] redux
-    this.setState({
-      yearChosen: event.target.value
-    })
+    // [x] redux
+    this.props.updateYearChosen(event.target.value)
   }
   updateWeekOrDayChosen = event => {
     // [] redux
-    this.setState({
-      weekOrDayChosen: event.target.value
-    })
-  }
-  updateFullDate = () => {
-    console.log(this.state.monthChosen)
-    console.log(this.state.dayChosen)
-    console.log(this.state.yearChosen)
-    console.log(this.state.weekOrDayChosen)
-    // format like so:
-    //     console.log(new Date(2018, 0, 1))
-
-    // monthChosen: '',
-    // dayChosen: '',
-    // yearChosen: '',
-    // weekOrDayChosen: ''
+    this.props.updateWeekOrDayChosen(event.target.value)
+    console.log(event.target.value)
   }
   render() {
     console.log(this.props)
@@ -120,7 +88,8 @@ class App extends Component {
         <button onClick={this.test}>test</button>
         <div className="inputContainer">
           <select onChange={this.updateMonthChosen} name="months">
-            {this.state.months.map((month, index) => {
+            <option value={this.props.monthChosen}>--Month--</option>
+            {this.props.months.map((month, index) => {
               return (
                 <option key={index} value={month.name}>
                   {month.name}
@@ -129,6 +98,7 @@ class App extends Component {
             })}
           </select>
           <select onChange={this.updateDayChosen} name="days">
+            <option value={this.props.dayChosen}>--Day--</option>
             {chosenMonth.map(days => {
               let array = []
               for (let i = 1; i <= days.days; i++) {
@@ -143,17 +113,19 @@ class App extends Component {
               })
             })}
           </select>
-          <select onChange={this.updateDayChosen} name="year">
+          <select onChange={this.updateYearChosen} name="year">
+            <option value={this.props.yearChosen}>--Year--</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
           </select>
-          <select onChange={this.updateDayChosen} name="W/D">
+          <select onChange={this.updateWeekOrDayChosen} name="W/D">
+            <option value={this.props.NumberOfDays}>--View--</option>
             <option value="1">Day</option>
             <option value="7">Week</option>
           </select>
-          <button onClick={this.updateFullDate}>Search</button>
+          <button onClick={this.setDateChosen}>Search</button>
         </div>
         <button onClick={this.onUpdateStateFirstDayOfWeek}>
           get current day
@@ -176,7 +148,11 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   onUpdateStateCurrentDay: updateCurrentDay,
-  onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek
+  onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
+  updateDayChosen: updateSelectedDay,
+  updateYearChosen: updateSelectedYear,
+  updateMonthChosen: updateSelectedMonth,
+  updateWeekOrDayChosen: updateSelectedDaysShown
 }
 
 export default connect(
