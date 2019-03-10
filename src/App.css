@@ -1,10 +1,33 @@
+@font-face {
+  font-family: 'good';
+  src: url('./assets/Good\ Vibes\ -\ Demo.ttf');
+}
 .App {
   text-align: center;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  background-color: #61628b18;
+}
+header,
+footer {
+  box-shadow: 0 0 5px black;
+  width: 100vw;
+  text-shadow: 0 0 5px black;
+  color: white;
+}
+header {
+  padding: 10px 0 7px 0;
+  font-family: 'good';
+  font-size: 2.3rem;
+
+  background-image: linear-gradient(#1b1d55, #61628b);
+}
+footer {
+  padding: 5px;
+  background-image: linear-gradient(#61628b, #1b1d55);
 }
 .inputContainer {
   display: flex;
@@ -23,14 +46,63 @@ select {
   width: 97vw;
   padding: 5px 2px;
   border: 1px solid black;
-}
-.week {
-  width: 12vw;
+  background-color: #61628b21;
 }
 .day {
   margin: 0;
-  font-size: 0.7rem;
+  width: 100%;
+  height: 70vh;
+  border: 1px solid black;
+}
+.week {
+  margin: 0;
+  font-size: 0.5rem;
   width: 13.2vw;
   height: 70vh;
   border: 1px solid black;
+}
+.week,
+.day {
+  background-color: white;
+}
+.daySelectorBar {
+  background-color: #61628b9d;
+  z-index: 1;
+  margin-bottom: -1px;
+}
+.Calender {
+  margin: 5px 0;
+}
+@media (min-width: 375px) {
+  header {
+    font-size: 3rem;
+  }
+  .week {
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 411px) {
+  header {
+    font-size: 3.5rem;
+  }
+  .week {
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 760px) {
+  header {
+    font-size: 4rem;
+  }
+  .week,
+  select,
+  button {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1000px) {
+  .week,
+  select,
+  button {
+    font-size: 1.1rem;
+  }
 }

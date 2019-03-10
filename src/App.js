@@ -1,26 +1,19 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import Day from './Components/Day'
 import DaySelectorBar from './Components/DaySelectorBar'
 import { connect } from 'react-redux'
+import Header from './Components/Header'
+import Footer from './Components/Footer'
+import WeekCalender from './Components/WeekCalender'
 
 class App extends Component {
   render() {
-    console.log(this.props.daysShown)
     return (
       <div className="App">
-        <div>Weekly Planner</div>
-        <DaySelectorBar />
-        <div className="eventsContainer">
-          {this.props.daysShown.map((day, index) => {
-            return (
-              <div key={index}>
-                <Day currentDay={day.toLocaleString().slice(0, 8)} />
-              </div>
-            )
-          })}
-        </div>
+        <Header />
+        <WeekCalender />
+        <Footer />
       </div>
     )
   }

@@ -59,7 +59,7 @@ class DaySelectorBar extends Component {
       month => month.number === this.props.monthChosen - 1
     )
     return (
-      <div>
+      <div className="daySelectorBar">
         <div className="inputContainer">
           <select onChange={this.updateMonthChosen} name="months">
             <option value={this.props.monthChosen}>--Month--</option>
