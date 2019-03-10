@@ -1,32 +1,39 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import CreateEvent from './CreateEvent'
 
 class Day extends Component {
-  render() {
-    let array = []
-    for (let i = 0; i <= 23; i++) {
-      if (i == 0) {
-        array.push('M.N')
-      } else if (i > 12 && i !== 0) {
-        array.push(i - 12)
-      } else {
-        array.push(i)
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      showCreateEvent: false
     }
+  }
+  createEvent = () => {
+    console.log(this.props.currentDay)
+    // new Date().toISOString
+    this.setState({
+      showCreateEvent: !this.state.showCreateEvent
+    })
+  }
+  render() {
+    let currentDay = `${this.props.currentDay.getMonth() +
+      1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`
     return (
       <div className={`${this.props.onWeekPage ? 'week' : 'day'}`}>
-        <p>{this.props.currentDay}</p>
+        <div className="dateAndAddEvent">
+          <span className="TheDate">{currentDay}</span>
+          <i className="fas fa-plus-circle" onClick={this.createEvent} />
+          {this.state.showCreateEvent ? (
+            <CreateEvent currentDay={currentDay} />
+          ) : null}
+        </div>
+
         {this.props.onWeekPage
-          ? array.map((space, index) => {
+          ? this.props.hours.map((space, index) => {
               return (
                 <div key={index} className="eventSpace">
-                  {typeof space === 'string' ? (
-                    <span className="time">{space}</span>
-                  ) : space <= 11 ? (
-                    <span className="time">{space} am</span>
-                  ) : (
-                    <span className="time">{space} pm</span>
-                  )}
+                  <span className="time">{space}</span>
                 </div>
               )
             })

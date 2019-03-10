@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 
 import { createStore } from 'redux'
 import currentDayReducer from './Reducers/currentDay-reducer'
+import reducer from './Reducers/currentDay-reducer'
 
 function getSunday(d) {
   var day = d.getDay(),
@@ -32,7 +33,6 @@ const months = [
 //   day: currentDayReducer
 // })
 const TheCurrentDay = new Date()
-const currentDay = TheCurrentDay.toISOString()
 const firstDayOfWeek = getSunday(new Date(TheCurrentDay.toDateString()))
 
 // get week
@@ -50,16 +50,26 @@ for (let i = 0; i < 7; i++) {
   daysShown.push(newDate)
 }
 
+let hours = []
+for (let i = 1; i <= 24; i++) {
+  if (i <= 12) {
+    hours.push(`${i}am`)
+  } else {
+    hours.push(`${i - 12}pm`)
+  }
+}
+
 const store = createStore(
   currentDayReducer,
   {
     day: TheCurrentDay,
     firstDayOfWeek: firstDayOfWeek,
-    monthChosen: currentDay.slice(5, 7) - 1,
-    dayChosen: currentDay.slice(8, 10),
-    yearChosen: currentDay.slice(0, 4),
+    monthChosen: TheCurrentDay.getMonth(),
+    dayChosen: TheCurrentDay.getDate(),
+    yearChosen: TheCurrentDay.getFullYear(),
     months: months,
-    daysShown: daysShown
+    daysShown: daysShown,
+    hours: hours
   },
   window.devToolsExtension && window.devToolsExtension()
 )

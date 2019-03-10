@@ -3,6 +3,7 @@ import './App.css'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import WeekCalender from './Components/WeekCalender'
+import CreateEvent from './Components/CreateEvent'
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <WeekCalender />
+        {/* <CreateEvent /> */}
         <Footer />
       </div>
     )

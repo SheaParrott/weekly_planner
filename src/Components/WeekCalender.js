@@ -13,7 +13,8 @@ class Week extends Component {
             return (
               <div key={index} className="displayedDays">
                 <Day
-                  currentDay={day.toLocaleString().slice(0, 8)}
+                  currentDay={day}
+                  hours={this.props.hours}
                   onWeekPage={true}
                 />
               </div>
@@ -32,7 +33,8 @@ const mapStateToProps = state => ({
   dayChosen: state.dayChosen,
   yearChosen: state.yearChosen,
   NumberOfDays: state.NumberOfDays,
-  daysShown: state.daysShown
+  daysShown: state.daysShown,
+  hours: state.hours
 })
 
 const mapActionsToProps = {

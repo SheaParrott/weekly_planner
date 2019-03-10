@@ -59,6 +59,21 @@ select {
   min-height: 70vh;
   border: 1px solid black;
 }
+.dateAndAddEvent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px 3px;
+}
+.fa-plus-circle {
+  font-size: 18px;
+  color: #666aa1ab;
+}
+.fa-plus-circle:hover {
+  color: #666aa163;
+  cursor: pointer;
+}
 .week {
   margin: 0;
   padding: 0;
@@ -66,10 +81,6 @@ select {
   width: 13.2vw;
   min-height: 60vh;
   border: 1px solid black;
-}
-.week,
-.day {
-  /* background-color: white; */
 }
 .displayedDays {
   text-shadow: 0 0 5px white;
@@ -102,21 +113,35 @@ select {
   font-size: 0.1rem;
   text-shadow: 0 0 5px white;
 }
+.CreateEvent {
+  background-color: white;
+  box-shadow: 0 0 5px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 200px;
+  right: 28vw;
+  left: 28vw;
+  z-index: 2;
+}
+.TheDate {
+  font-size: 0.3rem;
+}
 
 @media (min-width: 375px) {
   header {
     font-size: 3rem;
   }
-  .week {
+  .week,
+  .TheDate {
     font-size: 0.7rem;
   }
 }
 @media (min-width: 411px) {
   header {
     font-size: 3.5rem;
-  }
-  .week {
-    font-size: 0.7rem;
   }
 }
 @media (min-width: 760px) {
@@ -125,14 +150,16 @@ select {
   }
   .week,
   select,
-  button {
+  button,
+  .TheDate {
     font-size: 1rem;
   }
 }
 @media (min-width: 1000px) {
   .week,
   select,
-  button {
+  button,
+  .TheDate {
     font-size: 1.1rem;
   }
 }
