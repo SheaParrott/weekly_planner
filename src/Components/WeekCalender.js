@@ -11,7 +11,7 @@ class Week extends Component {
         <div className="eventsContainer">
           {this.props.daysShown.map((day, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="displayedDays">
                 <Day
                   currentDay={day.toLocaleString().slice(0, 8)}
                   onWeekPage={true}
@@ -40,8 +40,7 @@ const mapActionsToProps = {
   // onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
   // updateDayChosen: updateSelectedDay,
   // updateYearChosen: updateSelectedYear,
-  // updateMonthChosen: updateSelectedMonth,
-  // updateWeekOrDayChosen: updateSelectedDaysShown
+  // updateMonthChosen: updateSelectedMonth
 }
 export default connect(
   mapStateToProps,

@@ -58,7 +58,6 @@ const store = createStore(
     monthChosen: currentDay.slice(5, 7) - 1,
     dayChosen: currentDay.slice(8, 10),
     yearChosen: currentDay.slice(0, 4),
-    NumberOfDays: 7,
     months: months,
     daysShown: daysShown
   },

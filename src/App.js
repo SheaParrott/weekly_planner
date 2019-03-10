@@ -18,10 +18,16 @@ class App extends Component {
 
 export default App
 
+// tomorrows goals:
+// [] set up action and reducer for when user clicks search to generate
+//    new week shown.
+// [] set up react router so on click the user can view independent days
+// [] begin the events CRUD functionality
+
 // to get choose date bar working
-// [] chosen month
-// [] chosen day in state
-// [] chosen year
+// [x] chosen month
+// [x] chosen day in state
+// [x] chosen year
 
 // [] turn in assignment to jobs@trifinlabs.com
 // [] email subject - Technical Interview Assignment - Shea Parrott
@@ -33,8 +39,8 @@ export default App
 // [] make all entries CRUD - create, read, update, delete
 // [] going to need day objects that contain event objects.. working out the logic still
 // [] event object {event: “ “, start_date: MMDDYY, end_day: MMDDYY, start_time: 0:00, end_time: 0:00, isWeekend: bool, color:  }
-// [] display blocks for available events. Will probably do this in 30 min intervals
-// [] make visual difference for weekend boxes
+// [] display blocks for available events. Need to tie this to each hour from given index
+// [x] make visual difference for weekend boxes
 
 // push goals - optional
 // [] toggle between week and day views

@@ -5,8 +5,7 @@ import { updateFirstDayOfWeek } from '../Actions/updateFirstDayOfWeek'
 import {
   updateSelectedDay,
   updateSelectedMonth,
-  updateSelectedYear,
-  updateSelectedDaysShown
+  updateSelectedYear
 } from '../Actions/updateSelectedDay'
 
 class DaySelectorBar extends Component {
@@ -19,7 +18,6 @@ class DaySelectorBar extends Component {
     this.updateDayChosen = this.updateDayChosen.bind(this)
     this.updateYearChosen = this.updateYearChosen.bind(this)
     this.updateMonthChosen = this.updateMonthChosen.bind(this)
-    this.updateWeekOrDayChosen = this.updateWeekOrDayChosen.bind(this)
   }
   onUpdateStateCurrentDay() {
     // [x] redux
@@ -50,9 +48,6 @@ class DaySelectorBar extends Component {
   }
   updateYearChosen = event => {
     this.props.updateYearChosen(event.target.value)
-  }
-  updateWeekOrDayChosen = event => {
-    this.props.updateWeekOrDayChosen(event.target.value)
   }
   render() {
     let chosenMonth = this.props.months.filter(
@@ -94,11 +89,6 @@ class DaySelectorBar extends Component {
             <option value="2020">2020</option>
             <option value="2021">2021</option>
           </select>
-          <select onChange={this.updateWeekOrDayChosen} name="W/D">
-            <option value={this.props.NumberOfDays}>--View--</option>
-            <option value="1">Day</option>
-            <option value="7">Week</option>
-          </select>
           <button onClick={this.onUpdateStateCurrentDay}>Search</button>
         </div>
       </div>
@@ -120,8 +110,7 @@ const mapActionsToProps = {
   onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
   updateDayChosen: updateSelectedDay,
   updateYearChosen: updateSelectedYear,
-  updateMonthChosen: updateSelectedMonth,
-  updateWeekOrDayChosen: updateSelectedDaysShown
+  updateMonthChosen: updateSelectedMonth
 }
 export default connect(
   mapStateToProps,

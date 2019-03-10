@@ -1,7 +1,6 @@
 export const SELECTED_DAY = 'selectedDay'
 export const SELECTED_MONTH = 'selectedMonth'
 export const SELECTED_YEAR = 'selectedYear'
-export const SELECTED_DAYS_SHOWN = 'selectedDaysShown'
 
 // will work on better  name later
 // this takes the chosen day and finds the first day of the week
@@ -28,14 +27,6 @@ export function updateSelectedYear(selected) {
     type: SELECTED_YEAR,
     payload: {
       yearChosen: selected
-    }
-  }
-}
-export function updateSelectedDaysShown(selected) {
-  return {
-    type: SELECTED_DAYS_SHOWN,
-    payload: {
-      NumberOfDays: selected
     }
   }
 }
