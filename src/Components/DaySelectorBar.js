@@ -53,14 +53,13 @@ class DaySelectorBar extends Component {
   }
   updateWeekOrDayChosen = event => {
     this.props.updateWeekOrDayChosen(event.target.value)
-    console.log(event.target.value)
   }
   render() {
     let chosenMonth = this.props.months.filter(
       month => month.number === this.props.monthChosen - 1
     )
     return (
-      <div className="App">
+      <div>
         <div className="inputContainer">
           <select onChange={this.updateMonthChosen} name="months">
             <option value={this.props.monthChosen}>--Month--</option>
@@ -102,7 +101,6 @@ class DaySelectorBar extends Component {
           </select>
           <button onClick={this.onUpdateStateCurrentDay}>Search</button>
         </div>
-        {this.props.day}
       </div>
     )
   }

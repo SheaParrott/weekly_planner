@@ -8,9 +8,29 @@
 }
 .inputContainer {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   border: 1px solid black;
-  padding: 5px;
+  padding: 5px 2px;
+  width: 97vw;
 }
-input {
-  width: 15vw;
+select {
+  width: 18vw;
+}
+.eventsContainer {
+  display: flex;
+  justify-content: center;
+  width: 97vw;
+  padding: 5px 2px;
+  border: 1px solid black;
+}
+.week {
+  width: 12vw;
+}
+.day {
+  margin: 0;
+  font-size: 0.7rem;
+  width: 13.2vw;
+  height: 70vh;
+  border: 1px solid black;
 }

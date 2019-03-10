@@ -3,14 +3,52 @@ import logo from './logo.svg'
 import './App.css'
 import Day from './Components/Day'
 import DaySelectorBar from './Components/DaySelectorBar'
+import { connect } from 'react-redux'
 
 class App extends Component {
   render() {
-    return <DaySelectorBar />
+    console.log(this.props.daysShown)
+    return (
+      <div className="App">
+        <div>Weekly Planner</div>
+        <DaySelectorBar />
+        <div className="eventsContainer">
+          {this.props.daysShown.map((day, index) => {
+            return (
+              <div key={index}>
+                <Day currentDay={day.toLocaleString().slice(0, 8)} />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
   }
 }
 
-export default App
+const mapStateToProps = state => ({
+  day: state.day.toLocaleString(),
+  firstDayOfWeek: state.firstDayOfWeek,
+  months: state.months,
+  monthChosen: state.monthChosen,
+  dayChosen: state.dayChosen,
+  yearChosen: state.yearChosen,
+  NumberOfDays: state.NumberOfDays,
+  daysShown: state.daysShown
+})
+
+const mapActionsToProps = {
+  // onUpdateStateCurrentDay: updateCurrentDay,
+  // onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
+  // updateDayChosen: updateSelectedDay,
+  // updateYearChosen: updateSelectedYear,
+  // updateMonthChosen: updateSelectedMonth,
+  // updateWeekOrDayChosen: updateSelectedDaysShown
+}
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(App)
 
 // to get choose date bar working
 // [] chosen month

@@ -35,6 +35,21 @@ const TheCurrentDay = new Date()
 const currentDay = TheCurrentDay.toISOString()
 const firstDayOfWeek = getSunday(new Date(TheCurrentDay.toDateString()))
 
+// get week
+let daysShown = []
+
+for (let i = 0; i < 7; i++) {
+  let date = firstDayOfWeek.toISOString().split('')
+  let day = date[8] + date[9]
+  day = parseInt(day) + i
+  let newDate = new Date(
+    date.slice(0, 4).join(''),
+    date.slice(5, 7).join('') - 1,
+    day
+  )
+  daysShown.push(newDate)
+}
+
 const store = createStore(
   currentDayReducer,
   {
@@ -44,11 +59,11 @@ const store = createStore(
     dayChosen: currentDay.slice(8, 10),
     yearChosen: currentDay.slice(0, 4),
     NumberOfDays: 7,
-    months: months
+    months: months,
+    daysShown: daysShown
   },
   window.devToolsExtension && window.devToolsExtension()
 )
-console.log()
 
 ReactDOM.render(
   <Provider store={store}>
