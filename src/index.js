@@ -69,7 +69,9 @@ const store = createStore(
     yearChosen: TheCurrentDay.getFullYear(),
     months: months,
     daysShown: daysShown,
-    hours: hours
+    hours: hours,
+    byId: [],
+    byHash: {}
   },
   window.devToolsExtension && window.devToolsExtension()
 )

@@ -20,7 +20,6 @@ class DaySelectorBar extends Component {
     this.updateMonthChosen = this.updateMonthChosen.bind(this)
   }
   onUpdateStateCurrentDay() {
-    // [x] redux
     this.props.onUpdateStateCurrentDay(this.setDateChosen())
     this.onUpdateStateFirstDayOfWeek()
   }
@@ -53,6 +52,7 @@ class DaySelectorBar extends Component {
     let chosenMonth = this.props.months.filter(
       month => month.number === this.props.monthChosen - 1
     )
+    console.log(this.props.event.conent)
     return (
       <div className="daySelectorBar">
         <div className="inputContainer">
@@ -102,7 +102,8 @@ const mapStateToProps = state => ({
   monthChosen: state.monthChosen,
   dayChosen: state.dayChosen,
   yearChosen: state.yearChosen,
-  NumberOfDays: state.NumberOfDays
+  NumberOfDays: state.NumberOfDays,
+  event: state.byHash
 })
 
 const mapActionsToProps = {

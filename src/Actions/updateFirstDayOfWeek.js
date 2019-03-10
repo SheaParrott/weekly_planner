@@ -29,7 +29,6 @@ export function updateFirstDayOfWeek(currentDay) {
   return {
     type: FIRST_DAY_OF_WEEK,
     payload: {
-      firstDayOfWeek: currentDay,
       daysShown: daysShown
     }
   }
