@@ -14,7 +14,7 @@ class Week extends Component {
               <div key={index}>
                 <Day
                   currentDay={day.toLocaleString().slice(0, 8)}
-                  NumberOfDays={this.props.NumberOfDays}
+                  onWeekPage={true}
                 />
               </div>
             )
