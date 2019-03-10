@@ -10,8 +10,6 @@ class Day extends Component {
     }
   }
   createEvent = () => {
-    console.log(this.props.currentDay)
-    // new Date().toISOString
     this.setState({
       showCreateEvent: !this.state.showCreateEvent
     })
