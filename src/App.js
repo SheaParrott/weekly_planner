@@ -19,8 +19,10 @@ class App extends Component {
 export default App
 
 // tomorrows goals:
-// [] set up action and reducer for when user clicks search to generate
+// [x] set up action and reducer for when user clicks search to generate
 //    new week shown.
+// [] fix error where choosing new week concats the array after the
+//    first change.
 // [] set up react router so on click the user can view independent days
 // [] begin the events CRUD functionality
 

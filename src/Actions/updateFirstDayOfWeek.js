@@ -4,7 +4,7 @@ export const FIRST_DAY_OF_WEEK = 'firstDayOfWeek'
 // this takes the chosen day and finds the first day of the week
 // so we can get the week generated and add to state.
 
-// this is working but after the first change in the selected week.
+// [] this is working but after the first change in the selected week.
 // it is concating the arrays. I want it to drop the array. then
 // reset the state
 let daysShown = []
