@@ -8,7 +8,7 @@ function week(firstDayOfWeek) {
     let newDate = new Date(
       firstDayOfWeek.getFullYear(),
       firstDayOfWeek.getMonth() - 1,
-      firstDayOfWeek.getDate()
+      firstDayOfWeek.getDate() + i
     )
     daysShown.push(newDate)
   }

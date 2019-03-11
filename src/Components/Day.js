@@ -100,8 +100,8 @@ class Day extends Component {
     return (
       <div className="week">
         <div className="dateAndAddEvent">
-          <span className="TheDate">{`${this.props.currentDay.getMonth() +
-            1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`}</span>
+          <span className="TheDate">{`${this.props.day.getMonth() +
+            1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}</span>
           {this.state.showCreateEvent ? (
             <i className="fas fa-minus-circle" onClick={this.createEvent} />
           ) : (

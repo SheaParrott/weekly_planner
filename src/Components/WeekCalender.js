@@ -12,7 +12,7 @@ class Week extends Component {
           {this.props.daysShown.map((day, index) => {
             return (
               <div key={index} className="displayedDays">
-                <Day currentDay={day} />
+                <Day day={day} />
               </div>
             )
           })}
