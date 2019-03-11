@@ -34,7 +34,7 @@ class Day extends Component {
         )
       }
       return this.props.event.map(date => {
-        if (date.content.date === this.state.currentDay) {
+        if (date.content.date == this.props.day) {
           if (
             (date.content.StartTime <= time && time < date.content.EndTime) ||
             date.content.StartTime === time
@@ -109,10 +109,7 @@ class Day extends Component {
           )}
 
           {this.state.showCreateEvent ? (
-            <CreateEvent
-              currentDay={this.state.currentDay}
-              createEvent={this.createEvent}
-            />
+            <CreateEvent day={this.props.day} createEvent={this.createEvent} />
           ) : null}
         </div>
         {this.showEvents()}

@@ -18,13 +18,15 @@ class CreateEvent extends Component {
       obj.push(pair[1])
     }
     this.props.CreateAnEvent(obj)
-    this.props.createEvent()
   }
   render() {
     return (
       <form onSubmit={this.CreateAnEvent} className="CreateEvent">
-        <h3>{this.props.currentDay}</h3>
-        <input type="hidden" name="date" value={this.props.currentDay} />
+        <h3>
+          {this.props.day.getMonth() + 1}/{this.props.day.getDate()}/
+          {this.props.day.getFullYear()}
+        </h3>
+        <input type="hidden" name="date" value={this.props.day} />
         <label>Start Time:</label>
         <select name="EndTime" id="StartTime" className="createEventInputs">
           {this.props.hours.map((hour, index) => {
