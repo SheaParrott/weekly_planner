@@ -11,7 +11,7 @@
   flex-direction: column;
   background-color: #61628b18;
 }
-.eventSpace:nth-child(even) {
+.shading {
   background-color: #61628b1a;
 }
 header,
@@ -183,6 +183,13 @@ select {
 textarea {
   border-radius: 5px;
   width: 142px;
+}
+.timeCell {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px;
 }
 @media (min-width: 375px) {
   header {

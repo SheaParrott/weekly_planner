@@ -18,6 +18,7 @@ class CreateEvent extends Component {
       obj.push(pair[1])
     }
     this.props.CreateAnEvent(obj)
+    this.props.createEvent()
   }
   render() {
     return (
