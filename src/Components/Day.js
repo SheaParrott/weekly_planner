@@ -7,7 +7,9 @@ class Day extends Component {
     super(props)
     this.state = {
       showCreateEvent: false,
-      showEditOrDelete: false
+      showEditOrDelete: false,
+      currentDay: `${this.props.currentDay.getMonth() +
+        1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`
     }
   }
   createEvent = () => {
@@ -23,9 +25,6 @@ class Day extends Component {
   showEvents = () => {}
   deleteEvent = () => {}
   showEvents = () => {
-    let currentDay = `${this.props.currentDay.getMonth() +
-      1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`
-
     return this.props.hours.map((time, i) => {
       if (this.props.event.length === 0) {
         return (
@@ -37,10 +36,10 @@ class Day extends Component {
         )
       }
       return this.props.event.map(date => {
-        if (date.content.date === currentDay) {
+        if (date.content.date === this.state.currentDay) {
           if (
             (date.content.StartTime <= time && time < date.content.EndTime) ||
-            date.content.StartTime == time
+            date.content.StartTime === time
           ) {
             return (
               <div key={i} className="eventSpace">
@@ -100,12 +99,10 @@ class Day extends Component {
     })
   }
   render() {
-    let currentDay = `${this.props.currentDay.getMonth() +
-      1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`
     return (
       <div className="week">
         <div className="dateAndAddEvent">
-          <span className="TheDate">{currentDay}</span>
+          <span className="TheDate">{this.state.currentDay}</span>
           {this.state.showCreateEvent ? (
             <i className="fas fa-minus-circle" onClick={this.createEvent} />
           ) : (
@@ -114,7 +111,7 @@ class Day extends Component {
 
           {this.state.showCreateEvent ? (
             <CreateEvent
-              currentDay={currentDay}
+              currentDay={this.state.currentDay}
               createEvent={this.createEvent}
             />
           ) : null}
