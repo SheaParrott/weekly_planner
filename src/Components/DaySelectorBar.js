@@ -37,10 +37,7 @@ class DaySelectorBar extends Component {
     this.props.onUpdateStateFirstDayOfWeek(new Date(d.setDate(diff)))
   }
   updateMonthChosen = event => {
-    let theMonth = this.props.months.filter(
-      month => month.name === event.target.value
-    )
-    this.props.updateMonthChosen(theMonth[0].number)
+    this.props.updateMonthChosen(parseInt(event.target.value) + 1)
   }
   updateDayChosen = event => {
     this.props.updateDayChosen(event.target.value)
@@ -60,7 +57,7 @@ class DaySelectorBar extends Component {
             <option value={this.props.monthChosen}>--Month--</option>
             {this.props.months.map((month, index) => {
               return (
-                <option key={index} value={month.name}>
+                <option key={index} value={month.number}>
                   {month.name}
                 </option>
               )
