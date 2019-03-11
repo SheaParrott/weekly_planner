@@ -30,14 +30,13 @@ export default function currentDayReducer(state = initialState, action) {
     case SELECTED_MONTH:
       return Object.assign({}, state, action.payload)
     case ADD_EVENT: {
-      let hmm = {
+      return Object.assign({}, state, {
         byId: [...state.byId, action.id],
         byHash: {
           ...state.byHash,
           [action.id]: action.payload
         }
-      }
-      return Object.assign({}, state, hmm)
+      })
     }
     case UPDATE_EVENT: {
       state.byHash[action.id] = {

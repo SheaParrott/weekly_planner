@@ -97,13 +97,10 @@ class DaySelectorBar extends Component {
 }
 const mapStateToProps = state => ({
   day: state.day.toLocaleString(),
-  firstDayOfWeek: state.firstDayOfWeek,
   months: state.months,
   monthChosen: state.monthChosen,
   dayChosen: state.dayChosen,
-  yearChosen: state.yearChosen,
-  NumberOfDays: state.NumberOfDays,
-  event: state.byHash
+  yearChosen: state.yearChosen
 })
 
 const mapActionsToProps = {

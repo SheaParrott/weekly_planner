@@ -52,13 +52,6 @@ select {
   border: 1px solid black;
   background-color: #61628b0e;
 }
-.day {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  min-height: 70vh;
-  border: 1px solid black;
-}
 .dateAndAddEvent {
   display: flex;
   flex-wrap: wrap;

@@ -86,17 +86,8 @@ class Day extends Component {
 }
 
 const mapStateToProps = state => ({
-  event: Object.values(state.byHash)
+  event: Object.values(state.byHash),
+  hours: state.hours
 })
 
-const mapActionsToProps = {
-  // onUpdateStateCurrentDay: updateCurrentDay,
-  // onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
-  // updateDayChosen: updateSelectedDay,
-  // updateYearChosen: updateSelectedYear,
-  // updateMonthChosen: updateSelectedMonth
-}
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(Day)
+export default connect(mapStateToProps)(Day)
