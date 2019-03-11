@@ -151,7 +151,7 @@ select {
   right: 35vw;
   left: 35vw;
   background-color: white;
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 1px #5555559a;
 }
 .selection {
   padding: 5px;
@@ -177,11 +177,13 @@ select {
   color: #ac000077;
   cursor: pointer;
 }
-/* .selection:hover {
-  color: #666aa163;
-  cursor: pointer;
-} */
-
+.createEventInputs {
+  width: 150px;
+}
+textarea {
+  border-radius: 5px;
+  width: 142px;
+}
 @media (min-width: 375px) {
   header {
     font-size: 3rem;
@@ -212,6 +214,6 @@ select {
   select,
   button,
   .TheDate {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }

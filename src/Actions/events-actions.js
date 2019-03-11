@@ -23,7 +23,7 @@ export function updateEvent(event) {
   return {
     type: UPDATE_EVENT,
     id: '2',
-    payload: { content: { title: 'item 2 updated' } }
+    payload: { content: { body: 'item 2 updated' } }
   }
 }
 export function removeEvent(event) {

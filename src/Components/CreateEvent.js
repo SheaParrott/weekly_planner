@@ -26,7 +26,7 @@ class CreateEvent extends Component {
         <h3>{this.props.currentDay}</h3>
         <input type="hidden" name="date" value={this.props.currentDay} />
         <label>Start Time:</label>
-        <select name="EndTime" id="StartTime">
+        <select name="EndTime" id="StartTime" className="createEventInputs">
           {this.props.hours.map((hour, index) => {
             return (
               <option key={index} value={hour}>
@@ -36,7 +36,7 @@ class CreateEvent extends Component {
           })}
         </select>
         <label>End Time:</label>
-        <select name="EndTime" id="EndTime">
+        <select name="EndTime" id="EndTime" className="createEventInputs">
           {this.props.hours.map((hour, index) => {
             return (
               <option key={index} value={hour}>

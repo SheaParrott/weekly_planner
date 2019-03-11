@@ -1,4 +1,4 @@
-export const FIRST_DAY_OF_WEEK = 'firstDayOfWeek'
+export const DAYS_SHOWN = 'firstDayOfWeek'
 
 let daysShown = []
 
@@ -19,7 +19,7 @@ function week(firstDayOfWeek) {
 export function updateFirstDayOfWeek(currentDay) {
   week(currentDay)
   return {
-    type: FIRST_DAY_OF_WEEK,
+    type: DAYS_SHOWN,
     payload: {
       daysShown: daysShown
     }

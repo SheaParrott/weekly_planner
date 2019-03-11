@@ -1,5 +1,5 @@
 import { CURRENT_DAY } from '../Actions/updateStateCurrentDay'
-import { FIRST_DAY_OF_WEEK } from '../Actions/updateFirstDayOfWeek'
+import { DAYS_SHOWN } from '../Actions/updateFirstDayOfWeek'
 import {
   SELECTED_DAY,
   SELECTED_MONTH,
@@ -21,7 +21,7 @@ export default function currentDayReducer(state = initialState, action) {
   switch (action.type) {
     case CURRENT_DAY:
       return Object.assign({}, state, action.payload)
-    case FIRST_DAY_OF_WEEK:
+    case DAYS_SHOWN:
       return Object.assign({}, state, action.payload)
     case SELECTED_DAY:
       return Object.assign({}, state, action.payload)
