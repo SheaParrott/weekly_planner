@@ -2,10 +2,6 @@ export const SELECTED_DAY = 'selectedDay'
 export const SELECTED_MONTH = 'selectedMonth'
 export const SELECTED_YEAR = 'selectedYear'
 
-// will work on better  name later
-// this takes the chosen day and finds the first day of the week
-// so we can get the week generated and add to state.
-
 export function updateSelectedDay(selected) {
   return {
     type: SELECTED_DAY,

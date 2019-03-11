@@ -52,11 +52,7 @@ for (let i = 0; i < 7; i++) {
 
 let hours = []
 for (let i = 1; i <= 24; i++) {
-  if (i <= 12) {
-    hours.push(`${i}am`)
-  } else {
-    hours.push(`${i - 12}pm`)
-  }
+  hours.push(i)
 }
 
 const store = createStore(

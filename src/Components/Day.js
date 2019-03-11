@@ -14,30 +14,89 @@ class Day extends Component {
       showCreateEvent: !this.state.showCreateEvent
     })
   }
+
+  showEvents = () => {
+    let currentDay = `${this.props.currentDay.getMonth() +
+      1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`
+
+    return this.props.hours.map((time, i) => {
+      if (this.props.event.length === 0) {
+        return (
+          <div key={i} className="eventSpace">
+            <span className="time">
+              {time <= 12 ? `${time}am` : `${time - 12}pm`}
+            </span>
+          </div>
+        )
+      }
+      return this.props.event.map(date => {
+        if (date.content.date === currentDay) {
+          if (
+            (date.content.StartTime <= time && time < date.content.EndTime) ||
+            date.content.StartTime == time
+          ) {
+            return (
+              <div key={i} className="eventSpace">
+                <span className="time">
+                  {time <= 12 ? `${time}am` : `${time - 12}pm`}
+                </span>
+                <span className="event">{date.content.body}</span>
+              </div>
+            )
+          } else {
+            return (
+              <div key={i} className="eventSpace">
+                <span className="time">
+                  {time <= 12 ? `${time}am` : `${time - 12}pm`}
+                </span>
+              </div>
+            )
+          }
+        } else {
+          return (
+            <div key={i} className="eventSpace">
+              <span className="time">
+                {time <= 12 ? `${time}am` : `${time - 12}pm`}
+              </span>
+            </div>
+          )
+        }
+      })
+    })
+  }
   render() {
     let currentDay = `${this.props.currentDay.getMonth() +
       1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`
     return (
-      <div className={`${this.props.onWeekPage ? 'week' : 'day'}`}>
+      <div className="week">
         <div className="dateAndAddEvent">
           <span className="TheDate">{currentDay}</span>
           <i className="fas fa-plus-circle" onClick={this.createEvent} />
           {this.state.showCreateEvent ? (
-            <CreateEvent currentDay={currentDay} />
+            <CreateEvent
+              currentDay={currentDay}
+              createEvent={this.createEvent}
+            />
           ) : null}
         </div>
-
-        {this.props.onWeekPage
-          ? this.props.hours.map((space, index) => {
-              return (
-                <div key={index} className="eventSpace">
-                  <span className="time">{space}</span>
-                </div>
-              )
-            })
-          : null}
+        {this.showEvents()}
       </div>
     )
   }
 }
-export default Day
+
+const mapStateToProps = state => ({
+  event: Object.values(state.byHash)
+})
+
+const mapActionsToProps = {
+  // onUpdateStateCurrentDay: updateCurrentDay,
+  // onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
+  // updateDayChosen: updateSelectedDay,
+  // updateYearChosen: updateSelectedYear,
+  // updateMonthChosen: updateSelectedMonth
+}
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Day)

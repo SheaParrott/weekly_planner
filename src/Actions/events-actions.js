@@ -11,7 +11,7 @@ export function addEvent(event) {
     payload: {
       id: id,
       content: {
-        title: `${event[0]}`,
+        date: `${event[0]}`,
         StartTime: `${event[1]}`,
         EndTime: `${event[2]}`,
         body: `${event[3]}`

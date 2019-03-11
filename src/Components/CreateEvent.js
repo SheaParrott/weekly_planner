@@ -9,7 +9,6 @@ class CreateEvent extends Component {
   }
 
   CreateAnEvent = event => {
-    console.log()
     event.preventDefault()
     const form = event.target
     const formData = new FormData(form)
@@ -19,28 +18,29 @@ class CreateEvent extends Component {
       obj.push(pair[1])
     }
     this.props.CreateAnEvent(obj)
+    this.props.createEvent()
   }
   render() {
     return (
       <form onSubmit={this.CreateAnEvent} className="CreateEvent">
         <h3>{this.props.currentDay}</h3>
         <input type="hidden" name="date" value={this.props.currentDay} />
-        <label for="StartTime">End Time:</label>
+        <label>Start Time:</label>
         <select name="EndTime" id="StartTime">
           {this.props.hours.map((hour, index) => {
             return (
               <option key={index} value={hour}>
-                {hour}
+                {hour <= 12 ? `${hour}am` : `${hour - 12}pm`}
               </option>
             )
           })}
         </select>
-        <label for="EndTime">Start Time:</label>
+        <label>End Time:</label>
         <select name="EndTime" id="EndTime">
           {this.props.hours.map((hour, index) => {
             return (
               <option key={index} value={hour}>
-                {hour}
+                {hour <= 12 ? `${hour}am` : `${hour - 12}pm`}
               </option>
             )
           })}
@@ -52,32 +52,12 @@ class CreateEvent extends Component {
   }
 }
 const mapStateToProps = state => ({
-  day: state.day.toLocaleString(),
-  firstDayOfWeek: state.firstDayOfWeek,
-  months: state.months,
-  monthChosen: state.monthChosen,
-  dayChosen: state.dayChosen,
-  yearChosen: state.yearChosen,
-  NumberOfDays: state.NumberOfDays,
-  daysShown: state.daysShown,
   hours: state.hours
 })
 const mapActionsToProps = {
   CreateAnEvent: addEvent
-  // onUpdateStateCurrentDay: updateCurrentDay,
-  // onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
-  // updateDayChosen: updateSelectedDay,
-  // updateYearChosen: updateSelectedYear,
-  // updateMonthChosen: updateSelectedMonth
 }
 export default connect(
   mapStateToProps,
   mapActionsToProps
 )(CreateEvent)
-
-// assuming Redux passes in the state object as this.props.data
-// {this.props.data.byId.map((item, index) => (
-//   <div key={index}>
-//     {this.props.data.byHash[item].content.title}
-//   </div>
-// )}

@@ -52,7 +52,7 @@ class DaySelectorBar extends Component {
     let chosenMonth = this.props.months.filter(
       month => month.number === this.props.monthChosen - 1
     )
-    console.log(this.props.event.conent)
+
     return (
       <div className="daySelectorBar">
         <div className="inputContainer">

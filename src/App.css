@@ -105,7 +105,7 @@ select {
   margin: 5px 0;
 }
 .eventSpace {
-  min-height: 1rem;
+  min-height: 18px;
   display: flex;
   justify-content: flex-start;
 }
@@ -121,13 +121,18 @@ select {
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 200px;
+  top: 270px;
   right: 28vw;
   left: 28vw;
   z-index: 2;
 }
 .TheDate {
   font-size: 0.3rem;
+}
+.event {
+  background-color: #dd00006b;
+  border-radius: 5px;
+  padding: 2px;
 }
 
 @media (min-width: 375px) {
