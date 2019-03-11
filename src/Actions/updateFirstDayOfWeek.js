@@ -3,14 +3,12 @@ export const CLEAR_SHOWN = 'cleae'
 
 function week(firstDayOfWeek) {
   let daysShown = []
+
   for (let i = 0; i < 7; i++) {
-    let date = firstDayOfWeek.toISOString().split('')
-    let day = date[8] + date[9]
-    day = parseInt(day) + i
     let newDate = new Date(
-      date.slice(0, 4).join(''),
-      date.slice(5, 7).join('') - 1,
-      day
+      firstDayOfWeek.getFullYear(),
+      firstDayOfWeek.getMonth() - 1,
+      firstDayOfWeek.getDate()
     )
     daysShown.push(newDate)
   }
@@ -25,3 +23,6 @@ export function updateFirstDayOfWeek(currentDay) {
     }
   }
 }
+
+// {this.props.currentDay.getMonth() +
+//   1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}
