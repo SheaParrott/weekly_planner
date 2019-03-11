@@ -22,8 +22,6 @@ class Day extends Component {
     })
   }
 
-  showEvents = () => {}
-  deleteEvent = () => {}
   showEvents = () => {
     return this.props.hours.map((time, i) => {
       if (this.props.event.length === 0) {

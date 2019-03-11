@@ -12,8 +12,15 @@ class Time extends Component {
       showEditOrDelete: !this.state.showEditOrDelete
     })
   }
+  editEvent = event => {
+    //edit
+    console.log(this.props.date.id)
+  }
+  deleteEvent = event => {
+    //delete
+    console.log(this.props.date.id)
+  }
   render() {
-    console.log(this.props.i)
     return (
       <div
         key={this.props.i}
@@ -27,9 +34,7 @@ class Time extends Component {
                   ? `${this.props.time}am`
                   : `${this.props.time - 12}pm`}
               </span>
-              <span className="event" value={this.props.date.id}>
-                {this.props.date.content.body}
-              </span>
+              <span className="event">{this.props.date.content.body}</span>
               {this.props.showEdit ? (
                 <span>
                   <i
@@ -38,11 +43,11 @@ class Time extends Component {
                   />
                   {this.state.showEditOrDelete ? (
                     <div className="editOrDelete">
-                      <div className="edit">
-                        <i className="fas fa-pen" onClick={this.updateEvent} />
+                      <div className="edit" onClick={this.editEvent}>
+                        <i className="fas fa-pen" />
                         <span>EDIT</span>
                       </div>
-                      <div className="delete">
+                      <div className="delete" onClick={this.deleteEvent}>
                         <i
                           className="fas fa-trash-alt"
                           onClick={this.deleteEvent}
@@ -73,11 +78,3 @@ class Time extends Component {
 }
 
 export default Time
-
-{
-  /* <div key={i} className="eventSpace">
-<span className="time">
-  {time <= 12 ? `${time}am` : `${time - 12}pm`}
-</span>
-</div> */
-}
