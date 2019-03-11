@@ -6,7 +6,8 @@ class Day extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showCreateEvent: false
+      showCreateEvent: false,
+      showEditOrDelete: false
     }
   }
   createEvent = () => {
@@ -14,7 +15,13 @@ class Day extends Component {
       showCreateEvent: !this.state.showCreateEvent
     })
   }
-
+  showEditOrDelete = () => {
+    this.setState({
+      showEditOrDelete: !this.state.showEditOrDelete
+    })
+  }
+  showEvents = () => {}
+  deleteEvent = () => {}
   showEvents = () => {
     let currentDay = `${this.props.currentDay.getMonth() +
       1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}`
@@ -40,7 +47,35 @@ class Day extends Component {
                 <span className="time">
                   {time <= 12 ? `${time}am` : `${time - 12}pm`}
                 </span>
-                <span className="event">{date.content.body}</span>
+                <div className="content">
+                  <span className="event" value={date.id}>
+                    {date.content.body}
+                  </span>
+                  <span>
+                    <i
+                      className="fas fa-ellipsis-v"
+                      onClick={this.showEditOrDelete}
+                    />
+                    {this.state.showEditOrDelete ? (
+                      <div className="editOrDelete">
+                        <div className="edit">
+                          <i
+                            className="fas fa-pen"
+                            onClick={this.updateEvent}
+                          />
+                          <span>EDIT</span>
+                        </div>
+                        <div className="delete">
+                          <i
+                            className="fas fa-trash-alt"
+                            onClick={this.deleteEvent}
+                          />
+                          <span>DELETE</span>
+                        </div>
+                      </div>
+                    ) : null}
+                  </span>
+                </div>
               </div>
             )
           } else {
@@ -71,7 +106,12 @@ class Day extends Component {
       <div className="week">
         <div className="dateAndAddEvent">
           <span className="TheDate">{currentDay}</span>
-          <i className="fas fa-plus-circle" onClick={this.createEvent} />
+          {this.state.showCreateEvent ? (
+            <i className="fas fa-minus-circle" onClick={this.createEvent} />
+          ) : (
+            <i className="fas fa-plus-circle" onClick={this.createEvent} />
+          )}
+
           {this.state.showCreateEvent ? (
             <CreateEvent
               currentDay={currentDay}

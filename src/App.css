@@ -59,11 +59,23 @@ select {
   align-items: center;
   padding: 5px 3px;
 }
-.fa-plus-circle {
+.fa-plus-circle,
+.fa-minus-circle {
   font-size: 18px;
   color: #666aa1ab;
 }
-.fa-plus-circle:hover {
+
+.fa-trash-alt,
+.fa-pen {
+  font-size: 18px;
+}
+.fa-ellipsis-v {
+  font-size: 0.5rem;
+  padding: 2px;
+}
+.fa-plus-circle:hover,
+.fa-minus-circle:hover,
+.fa-ellipsis-v:hover {
   color: #666aa163;
   cursor: pointer;
 }
@@ -123,10 +135,52 @@ select {
   font-size: 0.3rem;
 }
 .event {
-  background-color: #dd00006b;
-  border-radius: 5px;
   padding: 2px;
 }
+.content {
+  background-color: #dd00006b;
+  border-radius: 5px;
+}
+.editOrDelete {
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  position: fixed;
+  padding: 5px;
+  top: 270px;
+  right: 35vw;
+  left: 35vw;
+  background-color: white;
+  box-shadow: 0 0 5px black;
+}
+.selection {
+  padding: 5px;
+}
+.edit,
+.delete {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2px;
+}
+.edit {
+  color: #000bacb6;
+}
+.delete {
+  color: #ac0000b6;
+}
+.edit:hover {
+  color: #000bac77;
+  cursor: pointer;
+}
+.delete:hover {
+  color: #ac000077;
+  cursor: pointer;
+}
+/* .selection:hover {
+  color: #666aa163;
+  cursor: pointer;
+} */
 
 @media (min-width: 375px) {
   header {
