@@ -5,11 +5,13 @@ import DaySelectorBar from './DaySelectorBar'
 
 class Week extends Component {
   render() {
+    console.log(this.props.daysShown)
     return (
       <div className="Calender">
         <DaySelectorBar />
         <div className="eventsContainer">
           {this.props.daysShown.map((day, index) => {
+            console.log(day)
             return (
               <div key={index} className="displayedDays">
                 <Day currentDay={day} />

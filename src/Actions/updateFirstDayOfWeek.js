@@ -1,8 +1,8 @@
 export const DAYS_SHOWN = 'firstDayOfWeek'
-
-let daysShown = []
+export const CLEAR_SHOWN = 'cleae'
 
 function week(firstDayOfWeek) {
+  let daysShown = []
   for (let i = 0; i < 7; i++) {
     let date = firstDayOfWeek.toISOString().split('')
     let day = date[8] + date[9]
@@ -14,14 +14,14 @@ function week(firstDayOfWeek) {
     )
     daysShown.push(newDate)
   }
+  return daysShown
 }
 
 export function updateFirstDayOfWeek(currentDay) {
-  week(currentDay)
   return {
     type: DAYS_SHOWN,
     payload: {
-      daysShown: daysShown
+      daysShown: week(currentDay)
     }
   }
 }

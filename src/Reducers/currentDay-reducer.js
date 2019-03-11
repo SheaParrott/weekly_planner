@@ -22,7 +22,22 @@ export default function currentDayReducer(state = initialState, action) {
     case CURRENT_DAY:
       return Object.assign({}, state, action.payload)
     case DAYS_SHOWN:
-      return Object.assign({}, state, action.payload)
+      // console.log(action.payload)
+      // console.log([
+      //   ...state.daysShown.slice(0, 0).concat(action.payload.daysShown)
+      // ])
+      // // console.log(
+      // //   'dS Reducer: ' +
+      // //     [...state.slice(0, action.daysShown).concat(action.payload.daysShown)]
+      // // )
+      // let updated = [
+      //   ...state.daysShown.slice(0, 0).concat([action.payload.daysShown])
+      // ]
+
+      return {
+        ...state,
+        daysShown: action.payload.daysShown
+      }
     case SELECTED_DAY:
       return Object.assign({}, state, action.payload)
     case SELECTED_YEAR:
