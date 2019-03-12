@@ -9,24 +9,32 @@ class CreateEvent extends Component {
     this.editEvent = this.editEvent.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
 
-    this.state = {
-      endTime: this.props.hours
+    if (this.props.optionsMenu) {
+      let eventBody = Object.entries(this.props.content).find(body => {
+        return body[0] == 'body'
+      })
+      this.state = {
+        endTime: this.props.hours,
+        editEventBody: eventBody[1]
+      }
+    } else {
+      this.state = {
+        endTime: this.props.hours
+      }
     }
   }
 
   updateEndTime = event => {
-    console.log(event.target.value)
-    // console.log([...this.props.hours])
-    console.log(
-      this.props.hours.slice(event.target.value, this.props.hours.length)
-    )
-    // when start time is chosen update hours to
-    //  be everything after the time chosen
     this.setState({
       endTime: this.props.hours.slice(
         event.target.value,
         this.props.hours.length
       )
+    })
+  }
+  _editEventBody = event => {
+    this.setState({
+      editEventBody: event.target.value
     })
   }
   CreateAnEvent = event => {
@@ -180,7 +188,18 @@ class CreateEvent extends Component {
             )
           })}
         </select>
-        <textarea name="body" required rows="3" />
+        {this.props.optionsMenu ? (
+          <textarea
+            name="body"
+            required
+            rows="3"
+            value={this.state.editEventBody}
+            onChange={this._editEventBody}
+          />
+        ) : (
+          <textarea name="body" required rows="3" />
+        )}
+
         <button type="submit">SUBMIT</button>
       </form>
     )

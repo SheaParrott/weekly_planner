@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CreateEvent from './CreateEvent'
+import EventForm from './EventForm'
 
 class Time extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class Time extends Component {
                     onClick={this.showEditOrDelete}
                   />
                   {this.state.showEditOrDelete ? (
-                    <CreateEvent
+                    <EventForm
                       date_id={this.props.date_id}
                       content={this.props.date.content}
                       day={this.props.date.content.date}

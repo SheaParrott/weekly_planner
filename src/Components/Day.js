@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import CreateEvent from './CreateEvent'
+import EventForm from './EventForm'
 import Time from './Time'
 
 class Day extends Component {
@@ -34,7 +34,7 @@ class Day extends Component {
           )}
 
           {this.state.showCreateEvent ? (
-            <CreateEvent day={this.props.day} createEvent={this.createEvent} />
+            <EventForm day={this.props.day} createEvent={this.createEvent} />
           ) : null}
         </div>
         <div className="eventSpace " />
@@ -57,7 +57,6 @@ class Day extends Component {
               let theDate = ''
               theDaysEvents.forEach(element => {
                 theDate = element
-                console.log(element)
               })
 
               return time == theDate.content.EndTime - 1 ? (

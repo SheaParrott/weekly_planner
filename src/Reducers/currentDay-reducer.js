@@ -52,9 +52,9 @@ export default function currentDayReducer(state = initialState, action) {
     }
     case REMOVE_EVENT: {
       const prunedIds = state.byId.filter(item => {
-        return item !== action.id // return all the items not matching the action.id
+        return item !== action.id
       })
-      delete state.byHash[action.id] // delete the hash associated with the action.id
+      delete state.byHash[action.id]
       return { ...state, byId: prunedIds, byHash: state.byHash }
     }
     default:
