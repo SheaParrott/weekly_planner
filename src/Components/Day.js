@@ -38,9 +38,11 @@ class Day extends Component {
           </div>
         ) : (
           <div>
-            <i className="fas fa-chevron-left" onClick={this._toggleHideDay} />
-
             <div className="dateAndAddEvent">
+              <i
+                className="fas fa-chevron-left"
+                onClick={this._toggleHideDay}
+              />
               <span className="TheDate">{`${this.props.day.getMonth() +
                 1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}</span>
               {this.state.showCreateEvent ? (
