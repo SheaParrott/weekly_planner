@@ -8,8 +8,27 @@ class CreateEvent extends Component {
     this.CreateAnEvent = this.CreateAnEvent.bind(this)
     this.editEvent = this.editEvent.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
+
+    this.state = {
+      endTime: this.props.hours
+    }
   }
 
+  updateEndTime = event => {
+    console.log(event.target.value)
+    // console.log([...this.props.hours])
+    console.log(
+      this.props.hours.slice(event.target.value, this.props.hours.length)
+    )
+    // when start time is chosen update hours to
+    //  be everything after the time chosen
+    this.setState({
+      endTime: this.props.hours.slice(
+        event.target.value,
+        this.props.hours.length
+      )
+    })
+  }
   CreateAnEvent = event => {
     event.preventDefault()
     const form = event.target
@@ -67,14 +86,13 @@ class CreateEvent extends Component {
 
         <input type="hidden" name="date" value={this.props.day} />
         <label>Start Time:</label>
-        <select name="EndTime" id="StartTime" className="createEventInputs">
+        <select
+          name="EndTime"
+          id="StartTime"
+          className="createEventInputs"
+          onChange={this.updateEndTime}
+        >
           {this.props.hours.map((hour, index) => {
-            // edit array
-            //
-            // find all that dont match current event
-            // filter for all but that
-            // then follow same logic pattern
-
             if (this.props.optionsMenu) {
               let daysEventsMinusCurrentEditEvent = this.props.event.filter(
                 date => date.id !== this.props.date_id
@@ -116,7 +134,7 @@ class CreateEvent extends Component {
         </select>
         <label>End Time:</label>
         <select name="EndTime" id="EndTime" className="createEventInputs">
-          {this.props.hours.map((hour, index) => {
+          {this.state.endTime.map((hour, index) => {
             if (this.props.optionsMenu) {
               let daysEventsMinusCurrentEditEvent = this.props.event.filter(
                 date => date.id !== this.props.date_id
@@ -181,17 +199,3 @@ export default connect(
   mapStateToProps,
   mapActionsToProps
 )(CreateEvent)
-
-// constructor(props) {
-//   super(props)
-//   this.editEvent = this.editEvent.bind(this)
-//   this.deleteEvent = this.deleteEvent.bind(this)
-//   this.state = {
-//     showEditOrDelete: false
-//   }
-// }
-// showEditOrDelete = () => {
-//   this.setState({
-//     showEditOrDelete: !this.state.showEditOrDelete
-//   })
-// }
