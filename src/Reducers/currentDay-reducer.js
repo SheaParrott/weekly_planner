@@ -1,5 +1,5 @@
 import { CURRENT_DAY } from '../Actions/updateStateCurrentDay'
-import { DAYS_SHOWN } from '../Actions/updateFirstDayOfWeek'
+import { DAYS_SHOWN } from '../Actions/updateFirstWeek'
 import {
   SELECTED_DAY,
   SELECTED_MONTH,

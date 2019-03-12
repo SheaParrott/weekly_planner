@@ -7,7 +7,7 @@ function week(firstDayOfWeek) {
   for (let i = 0; i < 7; i++) {
     let newDate = new Date(
       firstDayOfWeek.getFullYear(),
-      firstDayOfWeek.getMonth() - 1,
+      firstDayOfWeek.getMonth(),
       firstDayOfWeek.getDate() + i
     )
     daysShown.push(newDate)
@@ -15,7 +15,7 @@ function week(firstDayOfWeek) {
   return daysShown
 }
 
-export function updateFirstDayOfWeek(currentDay) {
+export function updateFirstWeek(currentDay) {
   return {
     type: DAYS_SHOWN,
     payload: {

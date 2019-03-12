@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateCurrentDay } from '../Actions/updateStateCurrentDay'
-import { updateFirstDayOfWeek } from '../Actions/updateFirstDayOfWeek'
+import { updateFirstWeek } from '../Actions/updateFirstWeek'
 import {
   updateSelectedDay,
   updateSelectedMonth,
@@ -37,7 +37,7 @@ class DaySelectorBar extends Component {
     this.props.onUpdateStateFirstDayOfWeek(new Date(d.setDate(diff)))
   }
   updateMonthChosen = event => {
-    this.props.updateMonthChosen(parseInt(event.target.value) + 1)
+    this.props.updateMonthChosen(parseInt(event.target.value))
   }
   updateDayChosen = event => {
     this.props.updateDayChosen(event.target.value)
@@ -47,7 +47,7 @@ class DaySelectorBar extends Component {
   }
   render() {
     let chosenMonth = this.props.months.filter(
-      month => month.number === this.props.monthChosen - 1
+      month => month.number === this.props.monthChosen
     )
 
     return (
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   onUpdateStateCurrentDay: updateCurrentDay,
-  onUpdateStateFirstDayOfWeek: updateFirstDayOfWeek,
+  onUpdateStateFirstDayOfWeek: updateFirstWeek,
   updateDayChosen: updateSelectedDay,
   updateYearChosen: updateSelectedYear,
   updateMonthChosen: updateSelectedMonth
