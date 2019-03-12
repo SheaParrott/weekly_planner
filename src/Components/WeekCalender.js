@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Day from './Day'
-import DaySelectorBar from './DaySelectorBar'
+import DateNavBar from './DateNavBar'
 
 class Week extends Component {
   render() {
     return (
       <div className="Calender">
-        <DaySelectorBar />
+        <DateNavBar />
         <div className="eventsContainer">
           {this.props.daysShown.map((day, index) => {
             return (
