@@ -60,7 +60,8 @@ select {
   padding: 5px 3px;
 }
 .fa-plus-circle,
-.fa-minus-circle {
+.fa-minus-circle,
+.fa-times {
   font-size: 18px;
   color: #666aa1ab;
 }
@@ -75,7 +76,8 @@ select {
 }
 .fa-plus-circle:hover,
 .fa-minus-circle:hover,
-.fa-ellipsis-v:hover {
+.fa-ellipsis-v:hover,
+.fa-times:hover {
   color: #666aa163;
   cursor: pointer;
 }
@@ -141,18 +143,7 @@ select {
   background-color: #dd00006b;
   border-radius: 5px;
 }
-.editOrDelete {
-  display: flex;
-  flex-direction: column;
-  z-index: 3;
-  position: fixed;
-  padding: 5px;
-  top: 270px;
-  right: 35vw;
-  left: 35vw;
-  background-color: white;
-  box-shadow: 0 0 1px #5555559a;
-}
+
 .selection {
   padding: 5px;
 }
@@ -190,6 +181,14 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   padding: 2px;
+}
+.editOrDelete {
+  width: 100%;
+}
+.editOrDeleteTopBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
 @media (min-width: 375px) {
   header {

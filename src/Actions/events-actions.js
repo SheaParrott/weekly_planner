@@ -22,13 +22,21 @@ export function addEvent(event) {
 export function updateEvent(event) {
   return {
     type: UPDATE_EVENT,
-    id: '2',
-    payload: { content: { body: 'item 2 updated' } }
+    id: event[0],
+    payload: {
+      id: event[0],
+      content: {
+        date: `${event[1]}`,
+        StartTime: `${event[2]}`,
+        EndTime: `${event[3]}`,
+        body: `${event[4]}`
+      }
+    }
   }
 }
 export function removeEvent(event) {
   return {
     type: REMOVE_EVENT,
-    id: '4'
+    id: event
   }
 }

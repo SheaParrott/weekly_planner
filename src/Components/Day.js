@@ -25,9 +25,9 @@ class Day extends Component {
   showEvents = () => {
     return this.props.hours.map((time, i) => {
       if (this.props.event.length === 0) {
-        return <Time time={time} i={i} isTrue={false} />
+        return <Time key={i} time={time} i={i} isTrue={false} />
       }
-      return this.props.event.map(date => {
+      return this.props.event.map((date, index) => {
         if (date.content.date == this.props.day) {
           if (
             (date.content.StartTime <= time && time < date.content.EndTime) ||
@@ -35,21 +35,38 @@ class Day extends Component {
           ) {
             return time == date.content.EndTime - 1 ? (
               <Time
+                key={index}
                 time={time}
                 date={date}
+                date_id={date.id}
                 i={i}
+                theDate={`${this.props.day.getMonth() +
+                  1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}
                 isTrue={true}
                 showEdit={true}
               />
             ) : (
-              <Time time={time} date={date} i={i} isTrue={true} />
+              <Time
+                key={index}
+                time={time}
+                date={date}
+                date_id={date.id}
+                i={i}
+                isTrue={true}
+              />
             )
-          } else {
-            return <Time time={time} date={date} i={i} isTrue={false} />
           }
-        } else {
-          return <Time time={time} date={date} i={i} isTrue={false} />
         }
+        return (
+          <Time
+            key={index}
+            time={time}
+            date={date}
+            date_id={date.id}
+            i={i}
+            isTrue={false}
+          />
+        )
       })
     })
   }

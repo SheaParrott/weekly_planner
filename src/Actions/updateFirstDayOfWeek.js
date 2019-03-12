@@ -23,6 +23,3 @@ export function updateFirstDayOfWeek(currentDay) {
     }
   }
 }
-
-// {this.props.currentDay.getMonth() +
-//   1}/${this.props.currentDay.getDate()}/${this.props.currentDay.getFullYear()}

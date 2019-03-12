@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CreateEvent from './CreateEvent'
 
 class Time extends Component {
   constructor(props) {
@@ -11,14 +12,6 @@ class Time extends Component {
     this.setState({
       showEditOrDelete: !this.state.showEditOrDelete
     })
-  }
-  editEvent = event => {
-    //edit
-    console.log(this.props.date.id)
-  }
-  deleteEvent = event => {
-    //delete
-    console.log(this.props.date.id)
   }
   render() {
     return (
@@ -42,19 +35,13 @@ class Time extends Component {
                     onClick={this.showEditOrDelete}
                   />
                   {this.state.showEditOrDelete ? (
-                    <div className="editOrDelete">
-                      <div className="edit" onClick={this.editEvent}>
-                        <i className="fas fa-pen" />
-                        <span>EDIT</span>
-                      </div>
-                      <div className="delete" onClick={this.deleteEvent}>
-                        <i
-                          className="fas fa-trash-alt"
-                          onClick={this.deleteEvent}
-                        />
-                        <span>DELETE</span>
-                      </div>
-                    </div>
+                    <CreateEvent
+                      date_id={this.props.date_id}
+                      content={this.props.date.content}
+                      day={this.props.date.content.date}
+                      showEditOrDelete={this.showEditOrDelete}
+                      optionsMenu={true}
+                    />
                   ) : null}
                 </span>
               ) : null}

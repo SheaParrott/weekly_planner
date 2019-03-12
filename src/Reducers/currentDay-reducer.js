@@ -55,10 +55,7 @@ export default function currentDayReducer(state = initialState, action) {
         return item !== action.id // return all the items not matching the action.id
       })
       delete state.byHash[action.id] // delete the hash associated with the action.id
-      return {
-        byId: prunedIds,
-        byHash: state.byHash
-      }
+      return { ...state, byId: prunedIds, byHash: state.byHash }
     }
     default:
       return state
