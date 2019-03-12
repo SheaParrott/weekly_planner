@@ -7,7 +7,6 @@ import { Provider } from 'react-redux'
 
 import { createStore } from 'redux'
 import currentDayReducer from './Reducers/currentDay-reducer'
-import reducer from './Reducers/currentDay-reducer'
 
 function getSunday(d) {
   var day = d.getDay(),
@@ -29,9 +28,7 @@ const months = [
   { number: 10, name: 'November', days: 30 },
   { number: 11, name: 'December', days: 31 }
 ]
-// const allReducers = combineReducers({
-//   day: currentDayReducer
-// })
+
 const TheCurrentDay = new Date()
 const firstDayOfWeek = getSunday(new Date(TheCurrentDay.toDateString()))
 

@@ -14,7 +14,8 @@ export function addEvent(event) {
         date: `${event[0]}`,
         StartTime: `${event[1]}`,
         EndTime: `${event[2]}`,
-        body: `${event[3]}`
+        color: `${event[3]}`,
+        body: `${event[4]}`
       }
     }
   }
@@ -29,7 +30,8 @@ export function updateEvent(event) {
         date: `${event[1]}`,
         StartTime: `${event[2]}`,
         EndTime: `${event[3]}`,
-        body: `${event[4]}`
+        color: `${event[4]}`,
+        body: `${event[5]}`
       }
     }
   }

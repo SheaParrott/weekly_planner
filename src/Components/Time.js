@@ -21,7 +21,7 @@ class Time extends Component {
       >
         {this.props.isTrue ? (
           <div key={this.props.i}>
-            <div className="content">
+            <div className={`content ${this.props.date.content.color}`}>
               <span className="time">
                 {this.props.time <= 12
                   ? `${this.props.time}am`

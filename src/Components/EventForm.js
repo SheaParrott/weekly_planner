@@ -15,11 +15,13 @@ class CreateEvent extends Component {
       })
       this.state = {
         endTime: this.props.hours,
-        editEventBody: eventBody[1]
+        editEventBody: eventBody[1],
+        _showDelete: false
       }
     } else {
       this.state = {
-        endTime: this.props.hours
+        endTime: this.props.hours,
+        toggleDelete: false
       }
     }
   }
@@ -65,6 +67,12 @@ class CreateEvent extends Component {
     this.props.deleteEvent(this.props.date_id)
     this.props.showEditOrDelete()
   }
+  _toggleDelete = () => {
+    this.setState({
+      toggleDelete: !this.state.toggleDelete
+    })
+  }
+
   render() {
     return (
       <form
@@ -80,8 +88,21 @@ class CreateEvent extends Component {
               />
               <i
                 className="fas fa-trash-alt delete"
-                onClick={this.deleteEvent}
+                onClick={this._toggleDelete}
               />
+              {this.state.toggleDelete ? (
+                <div className="toggleDeleteBar">
+                  <div className="close">
+                    <i className="fas fa-times" onClick={this._toggleDelete} />
+                  </div>
+
+                  <h3>Delete this event?</h3>
+
+                  <button className="deleteOption" onClick={this.deleteEvent}>
+                    Yes
+                  </button>
+                </div>
+              ) : null}
             </div>
             <span>Edit Event</span>
           </div>
@@ -188,6 +209,12 @@ class CreateEvent extends Component {
             )
           })}
         </select>
+        <label>Category</label>
+        <select name="body" className="createEventInputs">
+          <option value="Blue">Blue</option>
+          <option value="Red">Red</option>
+          <option value="Green">Green</option>
+        </select>
         {this.props.optionsMenu ? (
           <textarea
             name="body"
@@ -200,7 +227,9 @@ class CreateEvent extends Component {
           <textarea name="body" required rows="3" />
         )}
 
-        <button type="submit">SUBMIT</button>
+        <button className="eventForm" type="submit">
+          SUBMIT
+        </button>
       </form>
     )
   }
