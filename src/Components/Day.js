@@ -21,58 +21,10 @@ class Day extends Component {
       showEditOrDelete: !this.state.showEditOrDelete
     })
   }
-
-  showEvents = () => {
-    return this.props.hours.map((time, i) => {
-      if (this.props.event.length === 0) {
-        return <Time key={i} time={time} i={i} isTrue={false} />
-      }
-      return this.props.event.map((date, index) => {
-        if (date.content.date == this.props.day) {
-          if (
-            (date.content.StartTime <= time && time < date.content.EndTime) ||
-            date.content.StartTime === time
-          ) {
-            return time == date.content.EndTime - 1 ? (
-              <Time
-                key={index}
-                time={time}
-                date={date}
-                date_id={date.id}
-                i={i}
-                theDate={`${this.props.day.getMonth() +
-                  1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}
-                isTrue={true}
-                showEdit={true}
-              />
-            ) : (
-              <Time
-                key={index}
-                time={time}
-                date={date}
-                date_id={date.id}
-                i={i}
-                isTrue={true}
-              />
-            )
-          }
-        }
-        return (
-          <Time
-            key={index}
-            time={time}
-            date={date}
-            date_id={date.id}
-            i={i}
-            isTrue={false}
-          />
-        )
-      })
-    })
-  }
   render() {
     return (
       <div className="week">
+        <button onClick={this.test}>test</button>
         <div className="dateAndAddEvent">
           <span className="TheDate">{`${this.props.day.getMonth() +
             1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}</span>
@@ -87,7 +39,51 @@ class Day extends Component {
           ) : null}
         </div>
         <div className="eventSpace " />
-        {this.showEvents()}
+        {this.props.hours.map((time, i) => {
+          if (this.props.event.length === 0) {
+            return <Time key={i} time={time} i={i} isTrue={false} />
+          } else {
+            let theDaysEvents = this.props.event.filter(
+              date =>
+                (date.content.date == this.props.day &&
+                  date.content.StartTime <= time &&
+                  time < date.content.EndTime) ||
+                (date.content.StartTime === time &&
+                  date.content.date == this.props.day)
+            )
+            if (theDaysEvents.length > 0) {
+              let theDate = ''
+              theDaysEvents.forEach(element => {
+                theDate = element
+              })
+
+              return time == theDate.content.EndTime - 1 ? (
+                <Time
+                  key={i}
+                  time={time}
+                  date={theDate}
+                  date_id={theDate.id}
+                  i={i}
+                  theDate={`${this.props.day.getMonth() +
+                    1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}
+                  isTrue={true}
+                  showEdit={true}
+                />
+              ) : (
+                <Time
+                  key={i}
+                  time={time}
+                  date={theDate}
+                  date_id={theDate.id}
+                  i={i}
+                  isTrue={true}
+                />
+              )
+            } else {
+              return <Time key={i} time={time} i={i} isTrue={false} />
+            }
+          }
+        })}
       </div>
     )
   }

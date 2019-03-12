@@ -39,7 +39,6 @@ class CreateEvent extends Component {
     this.props.showEditOrDelete()
   }
   render() {
-    console.log(this.props.day)
     return (
       <form
         onSubmit={this.props.optionsMenu ? this.editEvent : this.CreateAnEvent}
