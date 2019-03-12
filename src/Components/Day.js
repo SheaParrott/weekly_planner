@@ -24,7 +24,6 @@ class Day extends Component {
   render() {
     return (
       <div className="week">
-        <button onClick={this.test}>test</button>
         <div className="dateAndAddEvent">
           <span className="TheDate">{`${this.props.day.getMonth() +
             1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}</span>
