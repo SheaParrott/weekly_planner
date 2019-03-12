@@ -180,7 +180,8 @@ textarea {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  padding: 2px;
+  padding: 1px;
+  min-height: 40px;
 }
 .editOrDelete {
   width: 100%;

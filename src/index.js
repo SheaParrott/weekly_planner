@@ -51,7 +51,7 @@ for (let i = 0; i < 7; i++) {
 }
 
 let hours = []
-for (let i = 1; i <= 24; i++) {
+for (let i = 1; i <= 25; i++) {
   hours.push(i)
 }
 

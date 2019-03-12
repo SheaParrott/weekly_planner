@@ -69,6 +69,44 @@ class CreateEvent extends Component {
         <label>Start Time:</label>
         <select name="EndTime" id="StartTime" className="createEventInputs">
           {this.props.hours.map((hour, index) => {
+            // edit array
+            //
+            // find all that dont match current event
+            // filter for all but that
+            // then follow same logic pattern
+
+            if (this.props.optionsMenu) {
+              let daysEventsMinusCurrentEditEvent = this.props.event.filter(
+                date => date.id !== this.props.date_id
+              )
+              let theDaysEvents = daysEventsMinusCurrentEditEvent.filter(
+                date =>
+                  (date.content.date == this.props.day &&
+                    date.content.StartTime <= hour &&
+                    hour < date.content.EndTime) ||
+                  (date.content.StartTime === hour &&
+                    date.content.date == this.props.day)
+              )
+              if (theDaysEvents.length > 0) {
+                return
+              }
+            } else {
+              let theDaysEvents = this.props.event.filter(
+                date =>
+                  (date.content.date == this.props.day &&
+                    date.content.StartTime <= hour &&
+                    hour < date.content.EndTime) ||
+                  (date.content.StartTime === hour &&
+                    date.content.date == this.props.day)
+              )
+              if (theDaysEvents.length > 0) {
+                return
+              }
+            }
+
+            if (hour == 25) {
+              return
+            }
             return (
               <option key={index} value={hour}>
                 {hour <= 12 ? `${hour}am` : `${hour - 12}pm`}
@@ -79,6 +117,44 @@ class CreateEvent extends Component {
         <label>End Time:</label>
         <select name="EndTime" id="EndTime" className="createEventInputs">
           {this.props.hours.map((hour, index) => {
+            if (this.props.optionsMenu) {
+              let daysEventsMinusCurrentEditEvent = this.props.event.filter(
+                date => date.id !== this.props.date_id
+              )
+              let theDaysEvents = daysEventsMinusCurrentEditEvent.filter(
+                date =>
+                  (date.content.date == this.props.day &&
+                    date.content.StartTime <= hour &&
+                    hour < date.content.EndTime) ||
+                  (date.content.StartTime === hour &&
+                    date.content.date == this.props.day)
+              )
+              if (theDaysEvents.length > 0) {
+                return
+              }
+            } else {
+              let theDaysEvents = this.props.event.filter(
+                date =>
+                  (date.content.date == this.props.day &&
+                    date.content.StartTime <= hour &&
+                    hour < date.content.EndTime) ||
+                  (date.content.StartTime === hour &&
+                    date.content.date == this.props.day)
+              )
+              if (theDaysEvents.length > 0) {
+                return
+              }
+            }
+
+            if (hour == 1) {
+              return
+            } else if (hour == 25) {
+              return (
+                <option key={index} value={hour}>
+                  1am
+                </option>
+              )
+            }
             return (
               <option key={index} value={hour}>
                 {hour <= 12 ? `${hour}am` : `${hour - 12}pm`}
@@ -93,7 +169,8 @@ class CreateEvent extends Component {
   }
 }
 const mapStateToProps = state => ({
-  hours: state.hours
+  hours: state.hours,
+  event: Object.values(state.byHash)
 })
 const mapActionsToProps = {
   CreateAnEvent: addEvent,

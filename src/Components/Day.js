@@ -39,6 +39,9 @@ class Day extends Component {
         </div>
         <div className="eventSpace " />
         {this.props.hours.map((time, i) => {
+          if (time == 25) {
+            return
+          }
           if (this.props.event.length === 0) {
             return <Time key={i} time={time} i={i} isTrue={false} />
           } else {
@@ -54,6 +57,7 @@ class Day extends Component {
               let theDate = ''
               theDaysEvents.forEach(element => {
                 theDate = element
+                console.log(element)
               })
 
               return time == theDate.content.EndTime - 1 ? (
