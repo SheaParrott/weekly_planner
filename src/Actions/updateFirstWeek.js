@@ -7,7 +7,7 @@ function week(firstDayOfWeek) {
   for (let i = 0; i < 7; i++) {
     let newDate = new Date(
       firstDayOfWeek.getFullYear(),
-      parseInt(firstDayOfWeek.getMonth()) - 1,
+      parseInt(firstDayOfWeek.getMonth()),
       parseInt(firstDayOfWeek.getDate()) + i
     )
     daysShown.push(newDate)
