@@ -102,8 +102,7 @@ select {
   font-size: 18px;
 }
 .fa-ellipsis-v {
-  font-size: 0.5rem;
-  padding: 2px;
+  padding: 3px;
 }
 .fa-plus-circle:hover,
 .fa-minus-circle:hover,
