@@ -32,7 +32,7 @@ class Time extends Component {
                 {this.props.showEdit ? (
                   <span>
                     <i
-                      className="fas fa-ellipsis-v"
+                      className="fas fa-edit"
                       onClick={this.showEditOrDelete}
                     />
                     {this.state.showEditOrDelete ? (

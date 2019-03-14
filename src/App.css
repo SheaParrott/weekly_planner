@@ -96,6 +96,16 @@ select {
   font-size: 18px;
   color: #666aa1ab;
 }
+.fa-edit {
+  /* font-size: 18px; */
+  color: #666aa1e8;
+  text-shadow: 0.5px 0.5px 0 #000000;
+}
+.fa-edit:hover {
+  text-shadow: 1px 1px 0 #00000063;
+  color: #666aa163;
+  cursor: pointer;
+}
 
 .fa-trash-alt,
 .fa-pen {
@@ -103,7 +113,6 @@ select {
 }
 .fa-plus-circle:hover,
 .fa-minus-circle:hover,
-.fa-ellipsis-v:hover,
 .fa-times:hover,
 .fa-chevron-right:hover,
 .fa-chevron-left:hover {
