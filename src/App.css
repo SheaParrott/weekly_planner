@@ -118,7 +118,7 @@ select {
   padding: 0;
   font-size: 0.5rem;
   width: 13.5vw;
-  min-height: 145vh;
+  min-height: 80vh;
   border: 1px solid black;
 }
 .hideDay {
@@ -219,7 +219,7 @@ select {
   cursor: pointer;
 }
 .createEventInputs {
-  width: 150px;
+  width: 130px;
 }
 textarea {
   border-radius: 5px;
@@ -272,10 +272,16 @@ textarea {
   .TheDate {
     font-size: 0.7rem;
   }
+  .createEventInputs {
+    width: 140px;
+  }
 }
 @media (min-width: 411px) {
   header {
     font-size: 3.5rem;
+  }
+  .createEventInputs {
+    width: 150px;
   }
 }
 @media (min-width: 760px) {
@@ -287,6 +293,9 @@ textarea {
   button,
   .TheDate {
     font-size: 1rem;
+  }
+  .createEventInputs {
+    width: 175px;
   }
 }
 @media (min-width: 1000px) {

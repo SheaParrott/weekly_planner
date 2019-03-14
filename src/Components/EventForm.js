@@ -224,7 +224,12 @@ class CreateEvent extends Component {
             onChange={this._editEventBody}
           />
         ) : (
-          <textarea name="body" required rows="3" />
+          <textarea
+            name="body"
+            className="createEventInputs"
+            required
+            rows="3"
+          />
         )}
 
         <button className="eventForm" type="submit">
