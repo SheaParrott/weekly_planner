@@ -217,6 +217,7 @@ class CreateEvent extends Component {
         </select>
         {this.props.optionsMenu ? (
           <textarea
+            className="createEventInputs"
             name="body"
             required
             rows="3"

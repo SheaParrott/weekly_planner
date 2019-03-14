@@ -27,24 +27,26 @@ class Time extends Component {
                   ? `${this.props.time}am`
                   : `${this.props.time - 12}pm`}
               </span>
-              <span className="event">{this.props.date.content.body}</span>
-              {this.props.showEdit ? (
-                <span>
-                  <i
-                    className="fas fa-ellipsis-v"
-                    onClick={this.showEditOrDelete}
-                  />
-                  {this.state.showEditOrDelete ? (
-                    <EventForm
-                      date_id={this.props.date_id}
-                      content={this.props.date.content}
-                      day={this.props.date.content.date}
-                      showEditOrDelete={this.showEditOrDelete}
-                      optionsMenu={true}
+              <div>
+                <span className="event">{this.props.date.content.body}</span>
+                {this.props.showEdit ? (
+                  <span>
+                    <i
+                      className="fas fa-ellipsis-v"
+                      onClick={this.showEditOrDelete}
                     />
-                  ) : null}
-                </span>
-              ) : null}
+                    {this.state.showEditOrDelete ? (
+                      <EventForm
+                        date_id={this.props.date_id}
+                        content={this.props.date.content}
+                        day={this.props.date.content.date}
+                        showEditOrDelete={this.showEditOrDelete}
+                        optionsMenu={true}
+                      />
+                    ) : null}
+                  </span>
+                ) : null}
+              </div>
             </div>
           </div>
         ) : (
