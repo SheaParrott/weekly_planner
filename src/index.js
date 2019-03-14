@@ -56,7 +56,6 @@ const store = createStore(
   currentDayReducer,
   {
     day: TheCurrentDay,
-    firstDayOfWeek: firstDayOfWeek,
     monthChosen: TheCurrentDay.getMonth(),
     dayChosen: TheCurrentDay.getDate(),
     yearChosen: TheCurrentDay.getFullYear(),

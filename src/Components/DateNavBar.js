@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateCurrentDay } from '../Actions/updateStateCurrentDay'
-import { updateFirstWeek } from '../Actions/updateFirstWeek'
 import {
   updateSelectedDay,
   updateSelectedMonth,
@@ -12,16 +11,12 @@ class DaySelectorBar extends Component {
   constructor(props) {
     super(props)
     this.onUpdateStateCurrentDay = this.onUpdateStateCurrentDay.bind(this)
-    this.onUpdateStateFirstDayOfWeek = this.onUpdateStateFirstDayOfWeek.bind(
-      this
-    )
     this.updateDayChosen = this.updateDayChosen.bind(this)
     this.updateYearChosen = this.updateYearChosen.bind(this)
     this.updateMonthChosen = this.updateMonthChosen.bind(this)
   }
   onUpdateStateCurrentDay() {
     this.props.onUpdateStateCurrentDay(this.setDateChosen())
-    this.onUpdateStateFirstDayOfWeek()
   }
   setDateChosen = () => {
     return new Date(
@@ -29,12 +24,6 @@ class DaySelectorBar extends Component {
       this.props.monthChosen,
       this.props.dayChosen
     )
-  }
-  onUpdateStateFirstDayOfWeek() {
-    let d = this.setDateChosen()
-    var day = d.getDay(),
-      diff = d.getDate() - day
-    this.props.onUpdateStateFirstDayOfWeek(new Date(d.setDate(diff)))
   }
   updateMonthChosen = event => {
     this.props.updateMonthChosen(parseInt(event.target.value))
@@ -93,7 +82,6 @@ class DaySelectorBar extends Component {
   }
 }
 const mapStateToProps = state => ({
-  day: state.day.toLocaleString(),
   months: state.months,
   monthChosen: state.monthChosen,
   dayChosen: state.dayChosen,
@@ -102,7 +90,6 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   onUpdateStateCurrentDay: updateCurrentDay,
-  onUpdateStateFirstDayOfWeek: updateFirstWeek,
   updateDayChosen: updateSelectedDay,
   updateYearChosen: updateSelectedYear,
   updateMonthChosen: updateSelectedMonth
