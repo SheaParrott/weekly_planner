@@ -27,14 +27,16 @@ button {
   color: white;
   font-weight: 700;
   outline-color: #a1a1a1;
-  padding: 2px 10px 2px 10px;
+  padding: 2px 15px;
   border-radius: 5px;
   background: linear-gradient(
     rgba(111, 119, 189, 0.432),
     rgba(101, 58, 243, 0.87)
   );
 }
-
+.large-view {
+  display: none;
+}
 select:hover,
 option:hover,
 button:hover {
@@ -74,30 +76,33 @@ select {
 }
 
 .eventsContainer {
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
   height: 80vh;
   width: 98vw;
   padding: 5px 2px;
   border: 1px solid black;
   background-color: #61628b0e;
 }
+.eventsContainer-flex {
+  display: flex;
+  justify-content: center;
+}
 .dateAndAddEvent {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   padding: 5px 3px;
 }
 .fa-plus-circle,
 .fa-minus-circle,
-.fa-times,
 .fa-chevron-right,
 .fa-chevron-left {
   padding: 3px;
-  font-size: 18px;
+  font-size: 15px;
   color: #666aa1ab;
+}
+.fa-times {
+  font-size: 18px;
 }
 .fa-edit {
   /* font-size: 18px; */
@@ -126,19 +131,45 @@ select {
   margin: 0;
   padding: 0;
   font-size: 0.5rem;
-  width: 13.5vw;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+.week0 {
+  width: 13.65vw;
+}
+.week1 {
+  width: 15.1vw;
+}
+.week2 {
+  width: 17.1vw;
+}
+.week3 {
+  width: 20.15vw;
+}
+.week4 {
+  width: 25.2vw;
+}
+.week5 {
+  width: 35.3vw;
+}
+.week6 {
+  width: 65.5vw;
+}
+.slide-left {
+  display: flex;
+  justify-content: start;
+  padding-left: 5px;
 }
 .hideDay {
   margin: 0;
   padding: 0;
   font-size: 0.5rem;
-  min-width: 9vw;
-  border: 1px solid black;
+  width: 5vw;
+  height: 65vh;
 }
 .displayedDays {
   text-shadow: 0 0 5px white;
   overflow: auto;
+  border: 1px solid black;
 }
 .displayedDays:nth-child(1),
 .displayedDays:nth-child(7) {
@@ -270,12 +301,18 @@ textarea {
 }
 .vertical {
   writing-mode: vertical-lr;
-  font-size: 1.5rem;
+  font-size: 0.5rem;
   letter-spacing: 1px;
   margin: 0;
-  padding: 20px 5px;
+  padding: 2px;
   text-align: center;
   height: 100%;
+}
+@media (min-width: 360px) {
+  .vertical {
+    font-size: 0.58rem;
+    padding: 3px;
+  }
 }
 @media (min-width: 375px) {
   header {
@@ -288,6 +325,13 @@ textarea {
   .createEventInputs {
     width: 140px;
   }
+  button {
+    padding: 2px 20px;
+  }
+  .vertical {
+    font-size: 0.7rem;
+    padding: 3px;
+  }
 }
 @media (min-width: 411px) {
   header {
@@ -295,6 +339,16 @@ textarea {
   }
   .createEventInputs {
     width: 150px;
+  }
+  .vertical {
+    font-size: 0.73rem;
+    padding: 3px;
+  }
+}
+@media (min-width: 414px) {
+  .vertical {
+    font-size: 0.743rem;
+    padding: 3px;
   }
 }
 @media (min-width: 760px) {
@@ -310,6 +364,22 @@ textarea {
   .createEventInputs {
     width: 175px;
   }
+  .dateAndAddEvent {
+    justify-content: space-evenly;
+  }
+  .fa-plus-circle,
+  .fa-minus-circle,
+  .fa-chevron-right,
+  .fa-chevron-left {
+    font-size: 20px;
+  }
+  button {
+    padding: 2px 40px;
+  }
+  .vertical {
+    font-size: 1.4rem;
+    padding: 5px;
+  }
 }
 @media (min-width: 1000px) {
   .week,
@@ -317,5 +387,29 @@ textarea {
   button,
   .TheDate {
     font-size: 1rem;
+  }
+  .large-view {
+    display: block;
+  }
+  .small-view {
+    display: none;
+  }
+  button {
+    padding: 2px 59px;
+  }
+  .vertical {
+    font-size: 1.92rem;
+    padding: 6px;
+  }
+}
+@media (min-width: 1280px) {
+  .vertical {
+    font-size: 1.5rem;
+    padding: 15px;
+  }
+}
+@media (min-width: 1440px) {
+  .vertical {
+    padding: 20px;
   }
 }

@@ -23,13 +23,38 @@ class Day extends Component {
     })
   }
   _toggleHideDay = () => {
+    if (this.state.hideDay) {
+      this.props.subtractFromNumberOfHiddenDays()
+    } else {
+      this.props.addToNumberOfHiddenDays()
+    }
     this.setState({
       hideDay: !this.state.hideDay
     })
   }
   render() {
     return (
-      <div className={this.state.hideDay ? 'hideDay' : 'week'}>
+      <div
+        className={
+          this.state.hideDay
+            ? 'hideDay'
+            : !this.props.hiddenDays
+            ? 'week week0'
+            : this.props.hiddenDays === 1
+            ? 'week week1'
+            : this.props.hiddenDays === 2
+            ? 'week week2'
+            : this.props.hiddenDays === 3
+            ? 'week week3'
+            : this.props.hiddenDays === 4
+            ? 'week week4'
+            : this.props.hiddenDays === 5
+            ? 'week week5'
+            : this.props.hiddenDays === 6
+            ? 'week week6'
+            : ''
+        }
+      >
         {this.state.hideDay ? (
           <div>
             <i className="fas fa-chevron-right" onClick={this._toggleHideDay} />
@@ -43,12 +68,29 @@ class Day extends Component {
                 className="fas fa-chevron-left"
                 onClick={this._toggleHideDay}
               />
+              {this.state.showCreateEvent ? (
+                <i
+                  className="fas fa-minus-circle small-view"
+                  onClick={this.createEvent}
+                />
+              ) : (
+                <i
+                  className="fas fa-plus-circle small-view"
+                  onClick={this.createEvent}
+                />
+              )}
               <span className="TheDate">{`${this.props.day.getMonth() +
                 1}/${this.props.day.getDate()}/${this.props.day.getFullYear()}`}</span>
               {this.state.showCreateEvent ? (
-                <i className="fas fa-minus-circle" onClick={this.createEvent} />
+                <i
+                  className="fas fa-minus-circle large-view"
+                  onClick={this.createEvent}
+                />
               ) : (
-                <i className="fas fa-plus-circle" onClick={this.createEvent} />
+                <i
+                  className="fas fa-plus-circle large-view"
+                  onClick={this.createEvent}
+                />
               )}
 
               {this.state.showCreateEvent ? (
