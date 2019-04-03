@@ -55,12 +55,12 @@ button.deleteOption {
 header {
   padding: 10px 0 7px 0;
   font-family: 'good';
-  font-size: 2.3rem;
+  font-size: 2rem;
   letter-spacing: 0.7px;
   background-image: linear-gradient(#1b1d55, #61628b);
 }
 footer {
-  padding: 5px;
+  padding: 5px 0;
   background-image: linear-gradient(#61628b, #1b1d55);
 }
 .inputContainer {
@@ -157,7 +157,6 @@ select {
 .slide-left {
   display: flex;
   justify-content: start;
-  padding-left: 5px;
 }
 .hideDay {
   margin: 0;
@@ -171,6 +170,7 @@ select {
   overflow: auto;
   border: 1px solid black;
 }
+
 .displayedDays:nth-child(1),
 .displayedDays:nth-child(7) {
   background-color: #ecf0ff;
@@ -316,7 +316,7 @@ textarea {
 }
 @media (min-width: 375px) {
   header {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .week,
   .TheDate {
@@ -335,7 +335,7 @@ textarea {
 }
 @media (min-width: 411px) {
   header {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   .createEventInputs {
     width: 150px;
@@ -351,9 +351,17 @@ textarea {
     padding: 3px;
   }
 }
+@media (min-width: 600px) {
+  .allHiddenMargin:nth-child(1) {
+    margin-left: 1px;
+  }
+}
 @media (min-width: 760px) {
+  .allHiddenMargin:nth-child(1) {
+    margin-left: 2px;
+  }
   header {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
   .week,
   select,
@@ -382,6 +390,9 @@ textarea {
   }
 }
 @media (min-width: 1000px) {
+  .allHiddenMargin:nth-child(1) {
+    margin-left: 6px;
+  }
   .week,
   select,
   button,
@@ -403,12 +414,18 @@ textarea {
   }
 }
 @media (min-width: 1280px) {
+  .allHiddenMargin:nth-child(1) {
+    margin-left: 9px;
+  }
   .vertical {
     font-size: 1.5rem;
     padding: 15px;
   }
 }
 @media (min-width: 1440px) {
+  .allHiddenMargin:nth-child(1) {
+    margin-left: 10.5px;
+  }
   .vertical {
     padding: 20px;
   }

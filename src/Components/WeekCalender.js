@@ -44,7 +44,12 @@ class Week extends Component {
         >
           {this.props.daysShown.map((day, index) => {
             return (
-              <div key={index} className="displayedDays">
+              <div
+                key={index}
+                className={`displayedDays ${
+                  this.state.hiddenDays === 7 ? 'allHiddenMargin' : ''
+                }`}
+              >
                 <Day
                   day={day}
                   addToNumberOfHiddenDays={this.addToNumberOfHiddenDays}
